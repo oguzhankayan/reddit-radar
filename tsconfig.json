@@ -17,8 +17,5 @@
   "include": [
     "apps/**/*.ts",
     "packages/**/*.ts"
-  ],
-  "exclude": [
-    "apps/api/**"
   ]
 }

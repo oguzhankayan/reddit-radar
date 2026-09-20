@@ -8,7 +8,6 @@ import { score } from "./commands/score.ts"
 import { scan } from "./commands/scan.ts"
 import { batchBench } from "./commands/batch-bench.ts"
 import { gate } from "./commands/gate.ts"
-import { keyCommand } from "./commands/key.ts"
 
 const [cmd, ...rest] = process.argv.slice(2)
 const headless = rest.includes("--headless") || process.env.RADAR_HEADFUL === "0"
@@ -67,7 +66,7 @@ switch (cmd) {
     const g = (f: string) => { const i = rest.indexOf(f); return i >= 0 ? rest[i + 1] : undefined }
     const question = g("--question")
     if (!question) { console.error('--question gerekli'); break }
-    await scan({ question, preset: g("--preset") as any, target: Number(g("--target") ?? 5_000) })
+    await scan({ question, preset: g("--preset") as any, target: Number(g("--target") ?? 5_000), language: g("--language") })
     break
   }
   case "batch-bench": {
@@ -80,9 +79,6 @@ switch (cmd) {
     await gate(rest.find((a) => a.startsWith("scan_")), nIdx >= 0 ? Number(rest[nIdx + 1]) : 20)
     break
   }
-  case "key":
-    await keyCommand(rest)
-    break
   default:
     console.log(`Reddit Radar CLI
 
@@ -90,10 +86,8 @@ switch (cmd) {
   node --env-file=.env apps/cli/src/index.ts <komut>
 
 Komutlar
-  scan --question "..." [--preset P] [--target N]   uçtan uca tarama
+  scan --question "..." [--preset P] [--target N] [--language XX]   uçtan uca tarama
   gate [scan_id] [-n 20]                            G3 kapısı: evidence'ı elle doğrula
-  key create --email X [--plan starter] [--quota N]  API anahtarı kes
-  key list | key revoke <hash-öneki>                anahtarları yönet
   collect [--target N] [--searches]                 sadece toplama
   source-probe [--headless] [--quick]               kaynak sağlık kontrolü
   wall-probe                                        rate limit ölçümü
@@ -104,5 +98,8 @@ Komutlar
   login                                             opsiyonel Reddit oturumu
 
 Preset: saas_opportunities buyer_intent competitor_complaints
-        alternatives feature_requests geo_seo_opportunities`)
+        alternatives feature_requests geo_seo_opportunities
+
+Anahtarlar: TYPESAFE_API_KEY (sınıflandırma), DEEPSEEK_API_KEY (plan + sentez).
+.env dosyasına ya da ortama koyun.`)
 }

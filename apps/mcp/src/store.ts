@@ -12,8 +12,6 @@ export type ScanState = {
   question: string
   progress: { collected: number; target: number; stage1_matched?: number; stage2_scored?: number; clusters?: number }
   error?: string
-  /** API tarafındaki scan kimliği — durum ve sonuç oradan okunur. */
-  remoteScanId?: string
   startedAt: string
   finishedAt?: string
 }

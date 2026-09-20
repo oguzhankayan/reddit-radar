@@ -21,18 +21,12 @@ importers:
         specifier: ^4.6.5
         version: 4.6.5
     devDependencies:
-      '@cloudflare/workers-types':
-        specifier: ^5.20260919.1
-        version: 5.20260919.1
       '@types/node':
         specifier: ^22.20.3
         version: 22.20.3
       esbuild:
         specifier: ^0.28.2
         version: 0.28.2
-      hono:
-        specifier: ^4.13.8
-        version: 4.13.8
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -40,10 +34,19 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(@types/node@22.20.3)(vite@8.3.0(@types/node@22.20.3)(esbuild@0.28.2))
 
-packages:
+  apps/mcp:
+    dependencies:
+      '@modelcontextprotocol/sdk':
+        specifier: ^1.0.0
+        version: 1.30.0(zod@4.6.5)
+      playwright:
+        specifier: ^1.63.0
+        version: 1.63.0
+      zod:
+        specifier: ^4.6.5
+        version: 4.6.5
 
-  '@cloudflare/workers-types@5.20260919.1':
-    resolution: {integrity: sha512-xUdKJoTHhNcXwnBrfrM1STkzm3oSUc9cRVzP8fO5NyJZ/UtnDnWZHDk9z8IkTnbC2WRWFAS87HICmqZhbHDvQw==}
+packages:
 
   '@esbuild/aix-ppc64@0.28.2':
     resolution: {integrity: sha512-XExcO+dvLKvVtNTibSTBej1NCAbaGhWn9Ww1ZPx80qsahhPFe/8jgWP0IchNe0F3HwkU7n8ejhH8bjonqht8mQ==}
@@ -989,8 +992,6 @@ packages:
     resolution: {integrity: sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==}
 
 snapshots:
-
-  '@cloudflare/workers-types@5.20260919.1': {}
 
   '@esbuild/aix-ppc64@0.28.2':
     optional: true

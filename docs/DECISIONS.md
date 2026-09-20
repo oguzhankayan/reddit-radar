@@ -1,5 +1,7 @@
 # Kararlar ve Ölçümler
 
+> Bu doküman Türkçedir. Projenin İngilizce genel bakışı için `README.md`.
+
 Bu dosya "neden böyle" sorusunun cevabı. Her madde bir ölçüme dayanıyor; tahminler
 açıkça tahmin diye işaretli. Bir şeyi değiştirmeden önce buraya bakın — çoğu
 "iyileştirme" fikri burada bir kez denenip çürütülmüş.
@@ -15,7 +17,8 @@ headful Chrome          → 200 JSON
 ```
 
 Bu yüzden toplama merkezîleştirilemez ve saf URL'li (remote) MCP mümkün değil.
-Mimarinin hibrit olmasının tek sebebi bu ölçüm.
+Ürün bu yüzden baştan yerel olmak zorundaydı. 0.5.0'da sınıflandırma ve sentez de
+aynı sürece alındı: artık tek Node süreci, tamamen kullanıcının makinesinde.
 
 **Reddit hesabı gerekmiyor.** Logged-out headful tarayıcıdan 6/6 endpoint 200 döndü.
 `radar_login` yalnız kota büyütmek için opsiyonel — erişim için değil.
@@ -207,6 +210,6 @@ tekrarlanmadan "precision@20 ≥ %90" pazarlama iddiası kurulmamalı.
   sorusunu ürün cevaplayamaz.
 - **Stage 1 kesme oranı** kendi etiket setinde kalibre edildi; ayrık örneklemde
   doğrulanmadı (`bench --offset` bunun için var).
-- **Ödeme yok.** Kota tanımlı ve zorlanıyor ama `item_quota` elle ayarlanan bir sayı.
-- **`packages/core/src/scan.ts`** (local-only tarama) artık MCP tarafından
-  kullanılmıyor; CLI hâlâ onu çağırıyor. İki yol paralel duruyor.
+- **Ölçek tek kullanıcı varsayımına dayanıyor.** 0.5.0 ile MCP ve CLI aynı
+  yerel boru hattını (`packages/core/src/scan.ts`) çağırıyor; merkezî hesap,
+  kota ya da çok kullanıcılı izolasyon yok.

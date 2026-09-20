@@ -1,273 +1,296 @@
 # Reddit Radar
 
-Doğal dilde bir araştırma sorusunu alıp binlerce Reddit postunu semantic olarak
-sınıflandıran, evidence-first structured intelligence üreten local araç.
+A fully local MCP server that takes a research question in plain language,
+semantically classifies thousands of Reddit posts, and returns structured
+market intelligence **with real Reddit evidence behind every claim**.
 
-**Durum:** CANLI · API `https://redditradar.creativefactory.tr` · npm `reddit-radar@0.4.0`
-Kapılar: G0 ✅ · G1 ✅ · G2 ✅ %90 · G3 ✅ 20/20 · MCP ✅ · Hosted API ✅
+It runs entirely on your own machine. No central server, no account, no quota:
+just your own API keys and the Chrome already installed on your system.
 
+**English** · [Türkçe](README.tr.md)
 
-## Kurulum
+## What it does
 
-```bash
-claude mcp add reddit-radar -e RADAR_API_KEY=rr_xxx -- npx -y --prefer-online reddit-radar
+It answers two questions, both grounded in evidence:
+
+- **"What is the market saying?"** — Recurring themes as clusters, each one
+  linked to the actual posts that produced it.
+- **"Who do I reach out to?"** — A flat, ranked list of people: author, post
+  link, post age, comment count, and subreddit breakdown.
+
+```
+"Find people on Reddit I could sell SEO services to"
+"What do small SaaS founders complain about with support tools?"
+"Which subreddits concentrate people looking for a Zendesk alternative?"
 ```
 
-Tek satır. **Reddit hesabı, TypeSafe ya da DeepSeek anahtarı gerekmez** — yalnız
-`RADAR_API_KEY`. Chrome kurulu olmalı; ilk taramada bir pencere açılır, kapatmayın.
+## Features
 
-`--prefer-online` olmadan npx kurulu paketi cache'ler ve güncellemeler günlerce gelmez.
+- **Evidence required.** Results come with post URLs, excerpts, and scores; you
+  do not have to trust a model's summary.
+- **Structural prompt-injection defense.** Reddit text reaches the model only
+  inside a nonce-fenced block and only through the `state` channel; it cannot
+  change the questions being asked.
+- **Honest coverage.** Classification failures are counted; above `2%` the
+  result is marked `partial`. Cache hits are reported separately from live
+  requests.
+- **Retention policy.** Raw Reddit text is deleted after 48 hours by default;
+  URLs, scores, and short excerpts remain.
+- **Low cost.** Classification is batched at 10 items per call: 5.6x faster,
+  33% cheaper, with identical shortlist ordering.
 
-| tool | ne için |
+## Install
+
+Requirements: **Node.js 20+**, **Google Chrome** (installed), **pnpm** (only for
+the developer setup).
+
+### 1. API keys
+
+Two keys are needed:
+
+| variable | purpose | where |
+|---|---|---|
+| `TYPESAFE_API_KEY` | Stage 1/2 classification | https://typesafe.ai |
+| `DEEPSEEK_API_KEY` | plan compilation + cluster synthesis | https://platform.deepseek.com |
+
+The LLM key can be any OpenAI-compatible provider; override `LLM_BASE_URL` and
+`LLM_MODEL` in `.env` (OpenRouter, a local vLLM, ...).
+
+### 2. Add the MCP to Claude
+
+```bash
+claude mcp add reddit-radar \
+  -e TYPESAFE_API_KEY=ts_xxx \
+  -e DEEPSEEK_API_KEY=sk-xxx \
+  -- npx -y --prefer-online reddit-radar
+```
+
+`--prefer-online` is there on purpose: without it npm caches the "latest
+version" answer and updates can lag.
+
+Alternatively, put the keys in `~/.reddit-radar/.env`; the MCP reads that file
+at startup. An existing environment variable is never overwritten.
+
+A Reddit account is **not required**. The first scan opens a Chrome window;
+this is expected, do not close it.
+
+## Usage
+
+Ask Claude in plain language. Language, preset, and the right tool are selected
+automatically:
+
+> "Use Reddit Radar to research the recurring problems small SaaS founders have
+> with customer support tools."
+
+The scan runs in the background (5,000 items ≈ 7 minutes). Claude tracks status
+and returns clusters with the underlying Reddit posts once it finishes.
+
+### Tools
+
+| tool | purpose |
 |---|---|
-| `radar_scan` | Taramayı başlatır, anında `scan_id` + süre tahmini döner |
-| `radar_scan_status` | İlerleme (yerel toplama + sunucu sınıflandırma birlikte) |
-| `radar_results` | **Pazar ne diyor** — cluster'lar, coverage, maliyet |
-| `radar_prospects` | **Kime yazacağım** — düz sıralı liste: yazar, URL, post yaşı, yorum sayısı, subreddit kırılımı |
-| `radar_evidence` | Bir cluster'ın altındaki gerçek postlar |
-| `radar_usage` | Bu ayki kullanım ve kalan kota |
-| `radar_version` | Sürüm kontrolü ve güncelleme komutu |
-| `radar_cancel` | Koşan taramayı durdurur |
-| `radar_forget` | Tarama verisini siler |
-| `radar_export` | Tüm sonuç JSON |
-| `radar_scans` | Bu makinedeki taramalar |
-| `radar_login` | Opsiyonel; erişim için değil, Reddit kotası için |
+| `radar_scan` | Starts a scan, immediately returns a `scan_id` + time estimate |
+| `radar_scan_status` | Progress |
+| `radar_results` | **What the market says** — clusters, coverage, cost |
+| `radar_prospects` | **Who to contact** — a flat ranked people/post list |
+| `radar_evidence` | The real posts behind one cluster |
+| `radar_usage` | Estimated API spend accumulated on this machine |
+| `radar_export` | Full result JSON |
+| `radar_scans` | Scans on this machine |
+| `radar_cancel` | Stops a running scan (partial results are kept) |
+| `radar_forget` | Deletes scan data |
+| `radar_version` | Version check and update command |
+| `radar_login` | Optional; not for access, only for Reddit quota |
 
-### Kullanıcının hiçbir şey öğrenmesi gerekmez
+### What the agent is told
 
-Normal cümleyle sorar, ajan gerisini tool açıklamalarından çözer:
+Tool descriptions and the server `instructions` field steer the agent to the
+right tool and **guard it against false claims**: because subreddit rules/member
+counts and comments are not collected, the agent cannot speak about them, nor
+present `signal_coverage` as data coverage.
 
-> "SEO hizmeti satabileceğim kişileri Reddit'te bul"
+## Architecture — why local
 
-- **Dil otomatik** — soru Türkçeyse Türkçe Reddit içeriği aranır. `language`
-  parametresi var ama normalde gerekmez.
-- **Preset otomatik** — sorudan çıkarılır.
-- **Tool seçimi otomatik** — sunucu `instructions` alanında kullanıcının
-  cümlesine göre yönlendirme tablosu var: "kişi bul / müşteri bul / nerede
-  reklam yapayım" → `radar_prospects`, "insanlar ne diyor / hangi sorunlar
-  tekrar ediyor" → `radar_results`.
-- Ajana ayrıca ne **söylememesi** gerektiği de yazılı: subreddit kuralları ve
-  üye sayısı toplanmadığı için "burada tanıtım serbest" iddiası kuramaz,
-  yorumlar toplanmadığı için "yorumlarda şunu övmüşler" diyemez.
-
-## Mimari — neden hibrit
-
-Reddit verisi **yalnız gerçek, headful bir tarayıcıdan** alınabiliyor. Ölçüldü:
+Reddit data can only be obtained from a **real, visible Chrome instance**.
+Measured (`docs/source-report.md`):
 
 ```
 curl (residential IP)  → 403 bot-challenge
 headless Chrome        → 403
-headful Chrome         → 200 JSON
+headful Chrome (fetch from the page context) → 200 JSON
 ```
 
-Bu yüzden toplama merkezîleştirilemez ve saf URL'li (remote) MCP mümkün değil.
-Toplama kullanıcının makinesinde, zekâ sunucuda:
+What matters is not login but a real browser. Collection therefore cannot be
+centralized; the product had to be local from the start. As of 0.5.0,
+classification and synthesis run in the same process too:
 
 ```
-Claude ──MCP(stdio)──► reddit-radar-mcp (kullanıcının makinesi)
-                          │  Playwright + gerçek Chrome
-                          │  plan · toplama · normalize · dedupe
-                          ▼  normalize edilmiş item'lar (200'lük batch)
-                       Cloudflare Workers API
-                          │  Jev Stage 1/2 · DeepSeek cluster+sentez
-                          │  D1 (kimlik, skor, kullanım) · R2 (artefakt)
-                          ▼
-                       structured evidence
+Claude ──MCP(stdio)──► reddit-radar  (single Node process, your machine)
+                         │ Playwright + Chrome   → Reddit collection
+                         │ TYPESAFE_API_KEY      → Stage 1/2 classification
+                         │ DEEPSEEK_API_KEY      → plan + cluster synthesis
+                         ▼
+                       ~/.reddit-radar/scans/<scan_id>/
+                         plan.json · items.ndjson · stage1.ndjson
+                         stage2.ndjson · results.json · evidence.csv
 ```
 
-Anahtarlar sunucuda kalır; kullanım D1'de ölçülür ve kotalanır.
+No data passes through an intermediary server; keys travel only from your own
+machine directly to the providers.
 
-## Dokümanlar
+## Cost
 
-| dosya | ne var |
-|---|---|
-| `docs/OPERATIONS.md` | Anahtar kesme, kotalar, maliyet, deploy, sorun giderme |
-| `docs/DECISIONS.md` | Her tasarım kararının ölçümü — değiştirmeden önce okuyun |
-| `docs/source-report.md` | Reddit erişim ölçümleri (curl/headless/headful) |
-| `docs/wall-report.md` | Rate limit ve listing derinliği |
-| `docs/bench-gate.md` | G2 precision kapısı |
-| `docs/gate-g3.md` | G3 uçtan uca kapısı (20/20) |
-| `docs/batch-bench.md` | Batching karşılaştırması |
+Measured values (`docs/bench-stage1.md`):
 
-## Geliştirici kurulumu
+- Stage 1: 712 tokens/item, **~$0.03 / 1,000 items**.
+- DeepSeek: ~$0.01 per scan.
+- A typical 5,000-item scan: roughly **$0.15**.
+
+`radar_usage` reports the accumulated estimate on this machine; the actual bill
+is with your key providers.
+
+## Reddit compliance and legal
+
+Read the full statement in [COMPLIANCE.md](COMPLIANCE.md). In short:
+
+- This project **does not scrape Reddit**: it does not parse HTML, bypass bot
+  protection, or circumvent authentication.
+- It reads public content from `www.reddit.com/...json` endpoints **from within
+  the user's own real browser session and page context**, exactly as the user's
+  own browser would load the page.
+- It never writes: no posts, comments, votes, messages, or account actions.
+- It respects rate limits: it reads `x-ratelimit-*` headers and waits before
+  ever hitting a 429. Only publicly available content is collected.
+- Raw content is retained for 48 hours by default; see `SECURITY.md`.
+- Collected data is the user's responsibility and must be used in line with
+  Reddit's terms.
+
+**Compliance and legal contact:** for any compliance, legal, or takedown
+concern, write to **hi@creativefactory.tr**.
+
+## Developer setup
 
 ```bash
 pnpm install
-cp .env.example .env    # TYPESAFE_API_KEY, DEEPSEEK_API_KEY
+cp .env.example .env     # TYPESAFE_API_KEY, DEEPSEEK_API_KEY
 ```
 
-Chrome kurulu olmalı (`channel: "chrome"`). Reddit login **gerekmiyor**.
+Chrome must be installed (`channel: "chrome"`). Reddit login is not required.
 
-## Geliştirici komutları
+### Commands
 
 ```bash
-pnpm radar scan --question "..." [--preset ...] [--target 5000]
-pnpm radar gate                     # G3 kapısı: evidence'ı elle doğrula
-pnpm radar collect --target 5000    # sadece toplama
-pnpm radar source-probe             # kaynak sağlık kontrolü
+pnpm radar scan --question "..." [--preset ...] [--target 5000] [--language en]
+pnpm radar gate                     # G3 gate: manually verify evidence
+pnpm radar collect --target 5000    # collection only
+pnpm radar source-probe             # source health check
 pnpm radar bench -n 500             # Stage 1 benchmark
 pnpm radar label --top 25 --sample 10
-pnpm radar score                    # G2 kapı ölçümü
-pnpm radar                          # komut listesi
+pnpm radar score                    # G2 gate measurement
+pnpm radar                          # command list
 ```
 
-Komutlar proje dizininin dışından da çalışır — yollar `process.cwd()`'den değil
-modülün kendi konumundan türetilir.
+Commands work from outside the project directory: paths are derived from the
+module's own location, not `process.cwd()`.
 
-Çıktı: `~/.reddit-radar/scans/<scan_id>/{plan,items.ndjson,stage1,stage2,results.json,evidence.csv}`
+### Verify
 
-## Güvenlik ve veri
+```bash
+pnpm typecheck && pnpm test && pnpm build:mcp
+```
 
-- **Prompt injection:** Reddit metni LLM'e **nonce'lu** sınır içinde gider (`<UNTRUSTED_REDDIT_CONTENT id="a7f3c2">`).
-  Sabit etiket yeterli değildi — post metnine kapanış etiketi yazarak bloktan kaçılabiliyordu.
-  Ayrıca sınır benzeri diziler ve satır başı rol işaretleri (`System:`) temizlenir.
-  Jev tarafında zaten yapısal güvenlik var: kriter güvenilir kanal, state düşman kanal, dönüş tipli bir değer.
-- **Path traversal:** `scan_id` şema seviyesinde `^scan_[a-z0-9]{1,32}$` ile kısıtlı.
-  Bu olmadan `radar_forget({scan_id:"../../..", scope:"all"})` `/Users` dizinini siliyordu.
-- **Saklama (v2 §34):** ham Reddit metni varsayılan **48 saatte** silinir (`RADAR_RAW_RETENTION_HOURS`),
-  silindiğine dair iz bırakılır. Sonuçlar, skorlar, URL'ler kalır. `radar_forget` ile elle de silinir.
-  **Sayfa cache'i de bu politikaya dahildir** — tam gövde ve kullanıcı adı tutuyor; dışarıda
-  bırakmak politikayı geçersiz kılıyordu (31 MB ham metin süresiz duruyordu).
-- **Cookie:** kod Reddit oturumunu `context.cookies()`/`storageState()` ile okumaz, serialize etmez,
-  loglamaz, dışarı göndermez. Yalnız persistent profile içinde, page context fetch'inde kullanılır.
-- **Sır yönetimi:** anahtarlar `.env`'de (600), repoya girmez. Reddit şifresi hiç alınmaz, OAuth yok.
-- **İzolasyon:** `~/.reddit-radar` 700. Aynı anda tek browser (mutex + lock dosyası); ikinci tarama sıraya girer.
-- **İptal:** `radar_cancel` toplama, Stage 1 ve Stage 2'nin ortasında çalışır; kısmi sonuç korunur.
-- **Dürüst muhasebe:** sınıflandırma hataları sayılır ve %2'yi aşarsa scan `partial` işaretlenir.
-  Cache isabetleri canlı isteklerden ayrı raporlanır. Sunucu yarıda ölürse yarım taramalar
-  açılışta `failed` olarak işaretlenir — durum sonsuza kadar "collecting" görünmez.
+## Measured facts
 
-## Ölçülen gerçekler
+All from the `docs/*.md` reports in this repo; not guesses.
 
-Hepsi bu repodaki `docs/*.md` raporlarından, tahmin değil.
-
-**Kaynak** (`docs/source-report.md`)
-- Anonim `.json` erişimi curl ile **403 bot-challenge**. Headless Chrome de **403**.
-  Headful Chrome sayfa bağlamından **200 JSON**. Belirleyici olan login değil, gerçek browser.
-- Reddit login **gerekmiyor**. `old.reddit` logged-out kullanılamıyor.
-- Global `/search.json` 10 item döndürüyor, subreddit-scoped search 100 → planner subreddit-scoped kullanır.
+**Source** (`docs/source-report.md`)
+- Anonymous `.json` access returns **403 bot-challenge** with curl, and **403**
+  with headless Chrome. Headful Chrome returns **200 JSON** from the page
+  context. What matters is a real browser, not login.
+- Reddit login is **not required**. `old.reddit` is unusable logged out.
+- Global `/search.json` returns 10 items; subreddit-scoped search returns 100 →
+  the planner uses subreddit-scoped search.
 
 **Rate limit** (`docs/wall-report.md`)
-- Quota-tabanlı: **~100 istek / ~10 dk**, `x-ratelimit-remaining` istek başına 1 azalıyor, aralıktan bağımsız.
-- Yavaşlamak hacim kazandırmaz. Collector kotayı okuyup 429 görmeden bekler.
-- Asıl darboğaz kota değil **listing derinliği**: subreddit başına ~930-1000 item, sonrası saf duplicate.
-  20k hedefi sayfa değil **partition** sayısıyla gelir (~20-25 partition).
+- Quota-based: **~100 requests / ~10 min**; slowing down does not buy volume.
+  The collector reads the quota and waits before ever seeing a 429.
+- The real bottleneck is not quota but **listing depth**: ~930-1000 items per
+  subreddit, after which it is pure duplicate. A 20k target is reached through
+  partition count, not deeper pages.
 
-**Toplama** (`docs/collection-report.md`)
-- 5.022 unique / 52 istek / 306 sn / **0 adet 429** / duplicate %1.3 / 0 bozuk kayıt.
-- Search partition'ları listing'den zayıf (10-250 item) ve aynı subreddit'te listing'le **%47 çakışıyor**.
+**Collection** (`docs/collection-report.md`)
+- 5,022 unique / 52 requests / 306 s / **0 rate-limit hits** / 1.3% duplicate /
+  0 malformed records.
 
-**Sınıflandırma** (`docs/bench-stage1.md`, `docs/bench-gate.md`)
-- precision@20 **%90.0** (18/20) ✅ · overall %83.9 (26/31) · 49 insan etiketi.
-- Jev insanla %73.5 uyumlu, DeepSeek %63.3 → gümüş etiketleyici gevşek, Jev muhafazakâr.
-- 712 token/item, **$0.03 / 1k item**, 20k Stage 1 ≈ $0.60.
-- **Hız tavanı ~3.3 çağrı/sn** ve eşzamanlılıktan bağımsız (12 ve 40'ta aynı ölçüldü).
-  Dokümandaki 1.200 istek/dk pratikte karşılık bulmuyor → bağlayıcı kısıt maliyet değil **çağrı sayısı**.
+**Classification** (`docs/bench-stage1.md`, `docs/bench-gate.md`)
+- precision@20 **90.0%** (18/20) · overall 83.9% (26/31) · 49 human labels.
+- Jev agrees with the human 73.5% of the time, DeepSeek 63.3% → the silver
+  labeler is loose, Jev is conservative.
+- **Throughput ceiling ~3.3 calls/s**, independent of concurrency → the binding
+  constraint is not cost but **call count**.
 
-**Batching** (`docs/batch-bench.md`) — Stage 1 çağrı başına 10 item:
+**Batching** (`docs/batch-bench.md`) — Stage 1, items per call:
 
-| item/çağrı | hızlanma | maliyet | karar uyumu | shortlist örtüşme |
+| items/call | speedup | cost | decision agreement | shortlist overlap |
 |---:|---:|---:|---:|---:|
-| 5 | 2.9x | %71 | %94.8 | %100 |
-| **10** | **5.6x** | **%67** | %93.0 | **%100** |
-| 20 | 10.6x | %66 | %93.8 | %80 ← contamination |
+| 5 | 2.9x | 71% | 94.8% | 100% |
+| **10** | **5.6x** | **67%** | 93.0% | **100%** |
+| 20 | 10.6x | 66% | 93.8% | 80% ← contamination |
 
-10 seçildi: sıralama birebir korunuyor. 20'de cross-item contamination shortlist'i bozuyor —
-planın §24'te uyardığı şey ölçümle görüldü. Tek tek olasılıklar biraz kayıyor (MAD 0.056)
-ama ürünün metriği precision@**top-k**, yani sıralama.
+10 was chosen: ordering is preserved exactly. At 20, cross-item contamination
+breaks the shortlist.
 
-## İki yapısal ders
+## Design lessons
 
-**1. Her kriter tek şey ölçmeli.** `relevant_to_topic`'i problem ifadesiyle sormak
-`contains_real_problem`'i ikinci kez uygulamaktı → recall %5.3. Alana indirgemek
-konuyu hiç test etmemekti → precision %79.2. `in_domain` + `about_topic` ayrı olunca düzeldi.
+Two mistakes were found and fixed through measurement (`docs/DECISIONS.md`):
 
-**2. Atomik kararları eşikleyip VE'leme.** Dört kriteri 0.8'de eşikleyip çarpmak
-shortlist'i %1'e düşürdü (%35 × %2 × %60 × %81). Ham olasılıkların ağırlıklı
-geometrik ortalaması + üst %5 kesme doğrusu. Bu zaten plan v2 §28'de yazıyordu —
-"atomik kararlar Jev'den, final score kodla".
+1. **Each criterion must measure one thing.** Asking `relevant_to_topic` with
+   the problem statement was applying `contains_real_problem` twice → recall
+   5.3%. Splitting into `in_domain` + `about_topic` fixed it.
+2. **Do not threshold atomic decisions and AND them.** Thresholding four
+   criteria at 0.8 and multiplying them dropped the shortlist to 1%. The right
+   path is a weighted geometric mean of raw probabilities plus a top-5% cut.
 
-## Derin denetimde bulunan hatalar
+Retrieval parameters were wrong too: I measured global search with the wrong
+`sort`/`t` and dismissed it for "returning only 10 items". With the correct
+parameters (`sort=relevance&t=year`) it returns 100 items across 67 subreddits.
+Channels were re-ordered: **global search → subreddit-scoped search → listing
+(width only)**.
 
-İlk denetim turu yüzeyseldi; ikinci turda kod satır satır okunduğunda dört hata daha çıktı:
+## Documents
 
-1. **Kalıcı deadlock.** `RadarBrowser.launch()` try bloğunun dışındaydı. Fırlatırsa
-   (Chrome yok, profil başka Chrome'da açık, disk dolu) browser mutex'i hiç bırakılmıyor
-   ve sonraki **her** tarama sessizce sonsuza kilitleniyordu.
-2. **Opportunity skoru preset'e göre sakatlanıyordu.** Ağırlıklar sabit toplam üzerinden
-   hesaplanıyor, preset'in üretmediği sinyaller sıfır sayılıyordu. `competitor_complaints`
-   dissatisfaction/workaround/WTP üretmediği için **%35 ağırlık boşa gidiyor**, skor 65'i
-   hiç geçemiyordu. Gerçek koşuda ölçüldü: max 60→92, "high signal" sayısı **24→194**.
-   Artık ağırlıklar mevcut sinyaller üzerinden yeniden normalize ediliyor ve
-   `score_basis` ile hangi sinyallerin kullanıldığı raporlanıyor.
-3. **Cache saklama politikasının dışındaydı** (yukarıda).
-4. **Bir test hatanın kendisini doğruluyordu** — `pain_severity: 1.5` için 13 bekliyordu,
-   ki bu tam olarak 2 numaralı hatanın çıktısıydı.
-5. **Konu-hedefli search'ler hiç koşmuyordu.** Partition sıralamasında listing'ler önceydi;
-   6 listing ~5.400 item üretip hedefi doldurunca 18 search partition'ı sıraya bile gelmiyordu.
-   Yani ürün, `"zendesk alternative"` gibi tam isabetli sorguları üretip **kullanmıyor**,
-   bunun yerine büyük subreddit'lerden genel içerik toplayıp %95'ini eliyordu.
-   Search'ler öne alındı; aynı soruda ölçülen fark:
-
-   | | önce | sonra |
-   |---|---:|---:|
-   | koşan search sorgusu | 0 | 6 |
-   | top-5 ortalama fırsat skoru | 60.6 | **81.0** |
-
-   Nitelik farkı daha büyük: 1. cluster *"Cold outreach and lead-gen tools don't convert"*
-   (konu dışı) yerine *"Zendesk and Intercom are too expensive and their AI resolution
-   pricing is unsustainable"* (rakip adı + fiyat şikâyeti, tam hedef).
-
-## İki kök neden (prospector karşılaştırmasından)
-
-Kapılar üst üste düşünce sorunun Jev'de değil kurguda olduğu anlaşıldı. İki temel hata:
-
-### 1. Retrieval parametreleri yanlıştı
-
-G0'da global aramayı `sort=new&t=month` ile ölçüp "yalnız 10 item döndürüyor" diye eledim
-ve tüm stratejiyi subreddit `/new` listing'leri üzerine kurdum. Aynı sorgu, doğru parametrelerle:
-
-| | item | subreddit | sayfalıyor |
-|---|---:|---:|---|
-| `sort=new` `t=month` | 14 | 12 | hayır |
-| `sort=relevance` `t=month` | 13 | 11 | hayır |
-| **`sort=relevance` `t=year`** | **100** | **67** | **evet** |
-
-`/new` listing'leri konusal olarak rastgele: "destek araçları" sorusuna "Fiverr'da dolandırıldım"
-getiriyorlar. Stage 1'e, retrieval'ın yapması gereken işi yaptırıyordum. Kanallar yeniden
-sıralandı: **global arama → subreddit-scoped arama → listing (yalnız genişlik)**.
-
-### 2. Ağırlıklı toplam, konudan bağımsız sinyallerin alakasız postu taşımasına izin veriyordu
-
-Beş boyutu ayrı sorup ağırlıklı topluyordum. Gerçek bir örnek:
-
-```
-"Small MSP in Sydney - Need white label domain registrar"
-  problem_match   0.10   ← Jev doğru: aradığımız problem değil
-  persona_match   0.07   ← Jev doğru: SaaS kurucusu değil
-  concrete_detail 0.95   ← doğru ama KONUDAN BAĞIMSIZ
-  intent          2.99   ← doğru ama KONUDAN BAĞIMSIZ
-  → 0.53, top-20'de BİRİNCİ
-```
-
-Jev her soruya doğru cevap verdi; toplam yanlıştı. `concrete_detail` ve `intent` iyi yazılmış
-hemen her Reddit postu için yüksek, yani skorun yarısı konuya bakmadan dağıtılıyordu.
-
-Rubrik iki soruya indirildi: **`disqualified`** (tek kavramlı kapı) ve **`fit`** (5 kademeli,
-tüm spec'i kendi talimatında taşıyan, bütünsel tek skor). Kademe metinleri uzunluğu niyetle
-karıştırmaz — tek cümlelik "Zendesk alternative?" en iyi kanıtlardan biridir.
-
-Sonuç, aynı soruda top-10 evidence:
-
-| önce | sonra |
+| file | contents |
 |---|---|
-| Small MSP — white label domain registrar | gorgias ticket volume pricing is killing our shopify store |
-| Cold outreach and lead-gen tools don't convert | Migrating from Zendesk + Intercom. Anyone using AI deflection? |
-| Founder-led sales collapses | how do I stop 2 agents replying to the same email? |
+| `docs/OPERATIONS.md` | Keys, cost, retention, troubleshooting, publishing |
+| `docs/DECISIONS.md` | The measurement behind every design decision — read before changing |
+| `docs/source-report.md` | Reddit access measurements (curl/headless/headful) |
+| `docs/wall-report.md` | Rate limit and listing depth |
+| `docs/bench-gate.md` | G2 precision gate |
+| `docs/gate-g3.md` | G3 end-to-end gate |
+| `docs/batch-bench.md` | Batching comparison |
+| `COMPLIANCE.md` | Reddit compliance and legal statement |
+| `SECURITY.md` | Threat model and vulnerability reporting |
+| `CONTRIBUTING.md` | Contribution guide and measurement discipline |
 
-## Sıradaki iş
+## Security and data
 
-- G3 kapısı: uçtan uca tarama sonucu, top 20 evidence'ın ≥18'i değerli mi.
-- Stage 2 batching (şu an tek tek; havuz küçük olduğu için öncelik düşük).
-- Stage 1 kesme oranı ayrık örneklemde doğrulanmalı (`bench --offset`).
-- Stage 1 kesme oranı (%5) aynı etiket setinde kalibre edildi; ayrık örneklemde doğrulanmalı.
+- **Prompt injection:** Reddit text reaches the model inside a nonce-fenced
+  block; a fixed tag was not enough. See `SECURITY.md`.
+- **Path traversal:** `scan_id` is restricted at the schema level to
+  `^scan_[a-z0-9]{1,32}$`.
+- **Cookies:** the code never reads, serializes, logs, or transmits the Reddit
+  session.
+- **Retention:** raw Reddit text is deleted after 48 hours by default, with a
+  trace left behind.
+- **Secrets:** keys live in `.env` (600) and never enter the repository.
+- Radar never writes posts/comments, votes, or sends messages.
+
+## Contributing
+
+Contributions are welcome. Read `CONTRIBUTING.md` first, and `docs/DECISIONS.md`
+if you are changing classification or scoring. Optimization without measurement
+is not accepted.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

@@ -29,6 +29,25 @@ const STAGE1_BATCH = Number(process.env.RADAR_STAGE1_BATCH ?? 10)
 
 const stateOf = (i: RadarItem) => ({ subreddit: i.subreddit, title: i.title ?? "", body: i.body.slice(0, POST_CHARS) })
 
+/**
+ * "Pazar ne diyor" değil "kime yazılabilir" sorusunun cevabı.
+ *
+ * `age_days` bilerek öne çıkarıldı: bir hizmet arayışı hızla soğur. Sekiz ay
+ * önce "SEO lazım" diyen çoktan birini bulmuştur. `comments` de aynı sebeple —
+ * 50 yorumlu bir post zaten cevaplanmıştır.
+ */
+const asProspect = (m: Scored, now: number) => ({
+  reddit_url: m.item.url,
+  subreddit: m.item.subreddit,
+  author: m.item.author ?? null,
+  title: m.item.title ?? null,
+  excerpt: m.item.body.slice(0, 300),
+  opportunity: Math.round(m.score ?? 0),
+  age_days: m.item.createdAt ? Math.round((now - m.item.createdAt) / 86_400) : null,
+  score: m.item.score ?? null,
+  comments: m.item.commentsCount ?? null,
+})
+
 export type ScanPhase =
   | { phase: "planning" }
   | { phase: "planned"; topic: string; preset: string; subreddits: number; partitions: number }
@@ -44,7 +63,7 @@ export type ScanPhase =
 export type ScanHooks = { onPhase?: (e: ScanPhase) => void }
 
 export async function runScan(
-  opts: { question: string; preset?: PresetName; target: number; scanId?: string; signal?: AbortSignal },
+  opts: { question: string; preset?: PresetName; target: number; scanId?: string; language?: string; signal?: AbortSignal },
   hooks: ScanHooks = {},
 ): Promise<{ ok: true; scanId: string; dir: string; results: any } | { ok: false; scanId: string; reason: string }> {
   const emit = (e: ScanPhase) => hooks.onPhase?.(e)
@@ -62,7 +81,7 @@ export async function runScan(
 
   // ── Planning ───────────────────────────────────────────────────────────
   emit({ phase: "planning" })
-  const compiled = await compileQuery(opts.question, llm)
+  const compiled = await compileQuery(opts.question, llm, undefined, opts.language)
   if (!compiled.ok) return { ok: false, scanId, reason: `plan_failed: ${compiled.reason}` }
   const plan = { ...compiled.plan, preset: opts.preset ?? compiled.plan.preset }
   const partitions = planPartitions(plan, opts.target)
@@ -181,6 +200,28 @@ export async function runScan(
   // ── Output ─────────────────────────────────────────────────────────────
   const partial = statusOf(collectStats.collected, opts.target, failures, rows.length, short.length)
   const byId = new Map(evidence.map((r) => [r.item.id, r]))
+  const now = Date.now() / 1000
+
+  // Subreddit kırılımı: "nerede yoğunlaşıyor" sorusunun cevabı.
+  const bySub = new Map<string, { n: number; total: number; best: number; url: string }>()
+  for (const m of evidence) {
+    const score = m.score ?? 0
+    const e = bySub.get(m.item.subreddit) ?? { n: 0, total: 0, best: -1, url: "" }
+    e.n++
+    e.total += score
+    if (score > e.best) { e.best = score; e.url = m.item.url }
+    bySub.set(m.item.subreddit, e)
+  }
+  const subreddit_breakdown = [...bySub.entries()]
+    .map(([subreddit, e]) => ({
+      subreddit,
+      evidence_count: e.n,
+      avg_opportunity: Math.round(e.total / e.n),
+      top_opportunity: e.best,
+      top_url: e.url,
+    }))
+    .sort((a, b) => b.evidence_count - a.evidence_count || b.avg_opportunity - a.avg_opportunity)
+
   const results = {
     scan_id: scanId,
     question: opts.question,
@@ -208,21 +249,18 @@ export async function runScan(
     // Skor hangi sinyaller üzerinden hesaplandı — preset'ler farklı sinyal
     // üretir, bu olmadan skorlar karşılaştırılamaz görünürdü.
     score_basis: { preset: plan.preset, signals_used: evidence[0]?.basis?.signalsUsed ?? [], signal_coverage: evidence[0]?.basis?.signalCoverage ?? 0 },
+    subreddit_breakdown,
+    // Düz sıralı liste — cluster'a girmemiş item'lar da burada.
+    prospects: evidence.slice(0, 300).map((m) => asProspect(m, now)),
     clusters: clusters.map((c) => {
       const members = c.member_ids.map((id) => byId.get(id)).filter(Boolean) as Scored[]
       return {
         cluster_name: c.cluster_name,
         count: members.length,
-        avg_opportunity: members.length ? Math.round(members.reduce((a, m) => a + m.score!, 0) / members.length) : 0,
+        avg_opportunity: members.length ? Math.round(members.reduce((a, m) => a + (m.score ?? 0), 0) / members.length) : 0,
         summary: c.summary,
         common_pattern: c.common_pattern,
-        evidence: members.sort((a, b) => b.score! - a.score!).slice(0, 10).map((m) => ({
-          reddit_url: m.item.url,
-          subreddit: m.item.subreddit,
-          title: m.item.title,
-          excerpt: m.item.body.slice(0, 300),
-          opportunity: m.score,
-        })),
+        evidence: members.sort((a, b) => (b.score ?? 0) - (a.score ?? 0)).slice(0, 10).map((m) => asProspect(m, now)),
       }
     }),
   }

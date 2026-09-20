@@ -1,37 +1,47 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod"
-import { readFileSync, existsSync } from "node:fs"
-import { purgeAllExpired as _sweep } from "../../../packages/core/src/retention.ts"
 import { join } from "node:path"
-import { runHostedScan } from "../../../packages/core/src/hosted-scan.ts"
-import { RadarClient } from "../../../packages/radar-client/src/index.ts"
+import { rmSync } from "node:fs"
+import { purgeAllExpired as _sweep, purgeScanRaw, RAW_RETENTION_HOURS } from "../../../packages/core/src/retention.ts"
+import { runScan } from "../../../packages/core/src/scan.ts"
 import { estimateScanMinutes } from "../../../packages/shared/src/estimate.ts"
 import { checkForUpdate, cachedUpdate } from "../../../packages/shared/src/version-check.ts"
 import { detectLanguage } from "../../../packages/shared/src/detect-language.ts"
-import { RadarBrowser } from "../../../packages/browser/src/browser.ts"
+import { RadarBrowser, RADAR_HOME } from "../../../packages/browser/src/browser.ts"
 import { browserMutex } from "../../../packages/shared/src/mutex.ts"
-import { PRESETS } from "../../../packages/classifiers/src/stage2.ts"
+import { PRESETS, type PresetName } from "../../../packages/classifiers/src/stage2.ts"
+import { envVar, loadDotEnv } from "../../../packages/shared/src/env.ts"
 import { writeState, readState, readResults, listScans, scanDir, isValidScanId, markInterrupted, type ScanState } from "./store.ts"
-import { RAW_RETENTION_HOURS } from "../../../packages/core/src/retention.ts"
-import { statSync, rmSync } from "node:fs"
+
+// Kullanıcı anahtarlarını MCP yapılandırmasında da verebilir, ~/.reddit-radar/.env
+// ya da çalışma dizinindeki .env'de de tutabilir. İkisi de okunur; var olan
+// ortam değişkeni asla ezilmez.
+loadDotEnv([join(RADAR_HOME, ".env"), join(process.cwd(), ".env")])
 
 /**
- * Reddit Radar MCP — local.
+ * Reddit Radar MCP — tamamen yerel.
  *
  * İki kural bu dosyanın şeklini belirliyor:
  *
  *  1. **Tarama uzun sürer, tool çağrısı bekleyemez.** `radar_scan` anında
  *     scan_id döner, iş arka planda koşar, durum `radar_scan_status`'tan
- *     poll edilir (v2 §39 status makinesi).
+ *     poll edilir.
  *  2. **Claude ham post görmez.** Yalnız cluster + count + evidence + confidence
- *     döner (v2 §33). 20k item asla context'e basılmaz.
+ *     döner. 20k item asla context'e basılmaz.
+ *
+ * Ağ, sunucu, hesap yok. Toplama gerçek Chrome'dan, sınıflandırma kullanıcının
+ * kendi TypeSafe anahtarıyla, sentez kendi LLM anahtarıyla yapılır.
  */
 
 const running = new Map<string, AbortController>()
 
 /** scan_id düşman girdi — şema seviyesinde kısıtlanır (path traversal savunması). */
 const scanIdSchema = z.string().regex(/^scan_[a-z0-9]{1,32}$/, "geçersiz scan_id")
+
+/** Zorunlu anahtarlar. Eksikse tarama başlatılmaz; kullanıcıya ne yapacağı söylenir. */
+const REQUIRED_KEYS = ["TYPESAFE_API_KEY", "DEEPSEEK_API_KEY"] as const
+const missingKeys = (): string[] => REQUIRED_KEYS.filter((k) => !envVar(k))
 
 /**
  * Tool cevabı. Güncelleme varsa her cevaba iliştirilir — `instructions` alanı
@@ -55,6 +65,7 @@ const server = new McpServer({ name: "reddit-radar", version: VERSION }, {
   instructions: [
     "Reddit Radar, bir araştırma sorusunu binlerce Reddit postunda semantic olarak tarar ve",
     "her iddianın altında gerçek Reddit kanıtı olan yapılandırılmış sonuç döndürür.",
+    "Tamamen yerel çalışır: veri kullanıcının makinesinden çıkmaz.",
     "",
     "## Kullanıcının ne istediğine göre hangi tool",
     "",
@@ -74,7 +85,7 @@ const server = new McpServer({ name: "reddit-radar", version: VERSION }, {
     "",
     "## Bilmen gerekenler",
     "",
-    "- Tarama DAKİKALAR sürer: 1.000 item ~3 dk, 5.000 ~7 dk, 20.000 ~42 dk.",
+    "- Tarama DAKİKALAR sürer: 1.000 item ~3 dk, 5.000 ~7 dk, 20.000 ~40 dk.",
     "  radar_scan hemen döner ve süre tahmini verir; durumu radar_scan_status ile izle.",
     "  Kullanıcıya süreyi baştan söyle ve beklerken başka bir şey sorma zorunluluğu hissetme.",
     "- Dil sorudan OTOMATİK algılanır. Kullanıcı Türkçe sorarsa Türkçe Reddit içeriği aranır.",
@@ -83,6 +94,8 @@ const server = new McpServer({ name: "reddit-radar", version: VERSION }, {
     "- İlk çalıştırmada ekranda bir Chrome penceresi açılır. Normaldir, kapatılmamalı.",
     "- Reddit hesabı GEREKMEZ. radar_login yalnız rate limit kotası için opsiyonel.",
     "- Aynı anda tek tarama koşar; ikincisi sıraya girer.",
+    "- Maliyet kullanıcının kendi anahtarlarına yansır (Jev + LLM). radar_usage",
+    "  bu makinede biriken tahmini harcamayı toplar.",
     "",
     "## Söylememen gerekenler",
     "",
@@ -116,6 +129,26 @@ server.registerTool("radar_scan", {
       "aranmasını istiyorsa \"en\")."),
   },
 }, async ({ question, preset, target_items, language }) => {
+  const missing = missingKeys()
+  if (missing.length) {
+    return text({
+      error: "missing_api_keys",
+      missing,
+      setup: [
+        "Reddit Radar tamamen yerel çalışır ve kendi anahtarlarınızı kullanır.",
+        "Gerekli: TYPESAFE_API_KEY (sınıflandırma) ve DEEPSEEK_API_KEY ya da OpenAI-uyumlu LLM anahtarı (plan + sentez).",
+        "",
+        "MCP yapılandırmasına ekleyin:",
+        "  claude mcp add reddit-radar \\",
+        "    -e TYPESAFE_API_KEY=ts_xxx \\",
+        "    -e DEEPSEEK_API_KEY=sk-xxx \\",
+        "    -- npx -y --prefer-online reddit-radar",
+        "",
+        "Ya da bu iki satırı ~/.reddit-radar/.env içine yazın.",
+      ].join("\n"),
+    })
+  }
+
   const scanId = `scan_${Date.now().toString(36)}`
   const state: ScanState = {
     scan_id: scanId, status: "planning", question,
@@ -126,34 +159,38 @@ server.registerTool("radar_scan", {
   const ac = new AbortController()
   running.set(scanId, ac)
 
-  // Arka planda koş — tool çağrısını bloklamıyoruz.
-    // Dil sorudan otomatik algılanır. Kullanıcının ya da ajanın parametre
+  // Dil sorudan otomatik algılanır. Kullanıcının ya da ajanın parametre
   // vermesini beklemek, ürünü talimat ezberletmeye bağlar.
   const effectiveLanguage = language ?? detectLanguage(question)
 
-  void runHostedScan({ question, target: target_items, preset, language: effectiveLanguage, signal: ac.signal }, {
+  void runScan({
+    question, target: target_items, preset: preset as PresetName | undefined,
+    scanId, language: effectiveLanguage, signal: ac.signal,
+  }, {
     onPhase: (e) => {
       switch (e.phase) {
         case "planning": state.status = "planning"; break
         case "planned": state.status = "collecting"; break
         case "collecting": state.progress.collected = e.collected; break
         case "collected": state.progress.collected = e.collected; break
-        case "finalizing": state.status = "classifying_stage1"; break
+        case "stage1": state.status = "classifying_stage1"; state.progress.stage1_matched = e.matched; break
+        case "stage2": state.status = "classifying_stage2"; state.progress.stage2_scored = e.scored; break
+        case "synthesized": state.status = "synthesizing"; state.progress.clusters = e.clusters; break
         case "cancelled": state.status = "cancelled"; break
       }
       writeState(state)
     },
   }).then((res) => {
     if (res.ok) {
-      // Sunucu tarafı devam ediyor; gerçek durum artık API'den okunur.
-      state.remoteScanId = res.scanId
-      state.status = "classifying_stage1"
+      state.status = res.results.status === "partial" ? "partial" : "completed"
+      state.progress.stage1_matched = res.results.coverage.stage1_matched
+      state.progress.stage2_scored = res.results.coverage.stage2_scored
+      state.progress.clusters = res.results.clusters.length
     } else {
-      state.finishedAt = new Date().toISOString()
       state.status = res.reason === "cancelled" ? "cancelled" : "failed"
       if (res.reason !== "cancelled") state.error = res.reason
-      if (res.scanId) state.remoteScanId = res.scanId
     }
+    state.finishedAt = new Date().toISOString()
     writeState(state)
   }).catch((err) => {
     state.status = "failed"
@@ -182,16 +219,7 @@ server.registerTool("radar_scan_status", {
 }, async ({ scan_id }) => {
   const s = readState(scan_id)
   if (!s) return text({ error: "not_found", scan_id })
-  if (!s.remoteScanId) return text(s)
-
-  // Toplama bitti; sınıflandırma/sentez sunucuda sürüyor.
-  const remote = await new RadarClient().status(s.remoteScanId)
-  if (!remote.ok) return text({ ...s, remote_error: remote.error.error })
-  const merged = { ...s, status: remote.data.status, partial_reason: remote.data.partial_reason, remote_progress: remote.data.progress }
-  if (["completed", "partial", "failed"].includes(remote.data.status) && !s.finishedAt) {
-    writeState({ ...s, status: remote.data.status as any, finishedAt: new Date().toISOString() })
-  }
-  return text(merged)
+  return text(s)
 })
 
 server.registerTool("radar_results", {
@@ -205,12 +233,14 @@ server.registerTool("radar_results", {
   inputSchema: { scan_id: scanIdSchema, limit: z.number().int().min(1).max(50).default(20) },
 }, async ({ scan_id, limit }) => {
   const s = readState(scan_id)
-  if (!s?.remoteScanId) return text({ error: "not_ready", status: s?.status ?? "not_found" })
-  const r = await new RadarClient().results(s.remoteScanId, limit)
-  if (!r.ok) return text({ error: r.error.error, status: r.error.status ?? s.status })
+  const r = readResults(scan_id)
+  if (!r) return text({ error: "not_ready", status: s?.status ?? "not_found" })
   return text({
-    ...r.data,
-    clusters: r.data.clusters.map((c: any, i: number) => ({ cluster_id: `cluster_${i}`, ...c, evidence: undefined })),
+    ...r,
+    clusters: (r.clusters as any[]).slice(0, limit).map((c, i) => {
+      const { evidence: _evidence, ...rest } = c
+      return { cluster_id: `cluster_${i}`, ...rest }
+    }),
   })
 })
 
@@ -222,10 +252,16 @@ server.registerTool("radar_evidence", {
     limit: z.number().int().min(1).max(50).default(10),
   },
 }, async ({ scan_id, cluster_id, limit }) => {
-  const s = readState(scan_id)
-  if (!s?.remoteScanId) return text({ error: "not_ready", status: s?.status ?? "not_found" })
-  const r = await new RadarClient().evidence(s.remoteScanId, cluster_id, limit)
-  return r.ok ? text(r.data) : text({ error: r.error.error })
+  const r = readResults(scan_id)
+  if (!r) return text({ error: "not_ready", status: readState(scan_id)?.status ?? "not_found" })
+  const idx = Number.parseInt(cluster_id.replace(/^cluster_/, ""), 10)
+  const cluster = r.clusters[idx]
+  if (!cluster) return text({ error: "cluster_not_found", available: r.clusters.length })
+  return text({
+    cluster_name: cluster.cluster_name,
+    count: cluster.count,
+    evidence: (cluster.evidence as any[]).slice(0, limit),
+  })
 })
 
 server.registerTool("radar_prospects", {
@@ -248,20 +284,50 @@ server.registerTool("radar_prospects", {
     subreddit: z.string().max(21).optional().describe("Tek bir subreddit'e daralt."),
   },
 }, async ({ scan_id, limit, max_age_days, min_opportunity, subreddit }) => {
-  const s = readState(scan_id)
-  if (!s?.remoteScanId) return text({ error: "not_ready", status: s?.status ?? "not_found" })
-  const r = await new RadarClient().prospects(s.remoteScanId, {
-    limit, maxAgeDays: max_age_days, minOpportunity: min_opportunity, subreddit,
+  const r = readResults(scan_id)
+  if (!r) return text({ error: "not_ready", status: readState(scan_id)?.status ?? "not_found" })
+
+  let rows: any[] = r.prospects ?? []
+  const before = rows.length
+  if (max_age_days !== undefined) rows = rows.filter((p) => p.age_days !== null && p.age_days <= max_age_days)
+  if (min_opportunity !== undefined) rows = rows.filter((p) => p.opportunity >= min_opportunity)
+  if (subreddit) rows = rows.filter((p) => String(p.subreddit).toLowerCase() === subreddit.toLowerCase())
+
+  return text({
+    scan_id,
+    total_scored: before,
+    matched: rows.length,
+    filters: { limit, max_age_days: max_age_days ?? null, min_opportunity: min_opportunity ?? null, subreddit: subreddit ?? null },
+    subreddit_breakdown: r.subreddit_breakdown ?? [],
+    prospects: rows.slice(0, limit),
   })
-  return r.ok ? text(r.data) : text({ error: r.error.error })
 })
 
 server.registerTool("radar_usage", {
-  description: "Bu ayki kullanım ve kalan kota.",
+  description:
+    "Bu makinede biriken tahmini API harcaması ve tarama sayısı. Self-hosted modda " +
+    "kota yoktur; maliyet doğrudan kullanıcının kendi anahtarlarına yansır.",
   inputSchema: {},
 }, async () => {
-  const r = await new RadarClient().usage()
-  return r.ok ? text(r.data) : text({ error: r.error.error })
+  let jev = 0, llm = 0, withResults = 0
+  const scans = listScans()
+  for (const s of scans) {
+    const r = readResults(s.scan_id)
+    if (!r?.cost) continue
+    jev += Number(r.cost.jev_usd ?? 0)
+    llm += Number(r.cost.llm_usd ?? 0)
+    withResults++
+  }
+  const round = (n: number) => Math.round(n * 10_000) / 10_000
+  return text({
+    mode: "self-hosted",
+    scans_on_this_machine: scans.length,
+    scans_with_results: withResults,
+    estimated_spend: { jev_usd: round(jev), llm_usd: round(llm), total_usd: round(jev + llm) },
+    note:
+      "Tahmin, tamamlanmış taramaların results.json cost alanlarından toplanır; " +
+      "gerçek fatura anahtar sağlayıcılarındadır. Kota uygulanmaz.",
+  })
 })
 
 server.registerTool("radar_cancel", {
@@ -280,8 +346,9 @@ server.registerTool("radar_cancel", {
 
 server.registerTool("radar_forget", {
   description:
-    "Bir taramanın verisini siler. scope='raw' yalnız ham Reddit metnini siler (sonuçlar kalır), " +
-    "scope='all' taramayı tamamen kaldırır. Ham metin zaten " + RAW_RETENTION_HOURS + " saat sonra otomatik silinir.",
+    "Bir taramanın ham Reddit metnini ya da tamamını siler. scope='raw' yalnız toplanan " +
+    "postları siler (sonuçlar, skorlar ve URL'ler kalır), scope='all' taramayı tamamen " +
+    "kaldırır. Ham metin zaten " + RAW_RETENTION_HOURS + " saat sonra otomatik silinir.",
   inputSchema: { scan_id: scanIdSchema, scope: z.enum(["raw", "all"]).default("raw") },
 }, async ({ scan_id, scope }) => {
   if (!isValidScanId(scan_id)) return text({ error: "invalid_scan_id" })
@@ -291,17 +358,17 @@ server.registerTool("radar_forget", {
     rmSync(dir, { recursive: true, force: true })
     return text({ deleted: "all", scan_id })
   }
-  return text({ deleted: "raw", scan_id, note: "Hosted modda ham metin sunucuda tarama biter bitmez silinir." })
+  const purged = purgeScanRaw(scan_id)
+  return text({ deleted: "raw", scan_id, files_removed: purged.filesRemoved, bytes_freed: purged.bytesFreed })
 })
 
 server.registerTool("radar_export", {
   description: "Taramanın sonucunu JSON olarak döndürür (tüm cluster ve evidence).",
   inputSchema: { scan_id: scanIdSchema },
 }, async ({ scan_id }) => {
-  const s = readState(scan_id)
-  if (!s?.remoteScanId) return text({ error: "not_ready", status: s?.status ?? "not_found" })
-  const r = await new RadarClient().results(s.remoteScanId, 50)
-  return r.ok ? text(r.data) : text({ error: r.error.error })
+  const r = readResults(scan_id)
+  if (!r) return text({ error: "not_ready", status: readState(scan_id)?.status ?? "not_found" })
+  return text(r)
 })
 
 server.registerTool("radar_version", {
@@ -362,7 +429,7 @@ server.registerTool("radar_login", {
   })
 })
 
-_sweep()          // local artık kalmış ham metni sil (v2 §34)
+_sweep()          // süresi dolmuş ham metni sil
 markInterrupted() // önceki süreçten kalan yarım taramaları dürüstçe işaretle
 void checkForUpdate(VERSION) // arka planda; başarısız olursa sessizce yok sayılır
 

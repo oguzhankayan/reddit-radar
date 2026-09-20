@@ -1,0 +1,56 @@
+name: Bug report
+description: Something is broken or behaves unexpectedly.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Security issues: do NOT open a public issue —
+        follow the reporting path in SECURITY.md instead.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. claude mcp add ...
+        2. ask "..." 
+        3. see error
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Reddit Radar version
+      description: Output of `radar_version`, or the npm version you installed.
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node version
+      placeholder: "node -v"
+    validations:
+      required: true
+  - type: input
+    id: chrome
+    attributes:
+      label: Chrome version
+      description: Chrome must be installed for collection to work.
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Scan `state.json`, error text, or the `partial_reason`. Redact anything personal.
+      render: shell
+    validations:
+      required: false

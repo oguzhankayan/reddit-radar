@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: mailto:oguzhankayan@outlook.com.tr
+    about: Do not report security issues publicly; see SECURITY.md.
+  - name: Compliance or legal concern
+    url: mailto:hi@creativefactory.tr
+    about: Reddit compliance, legal, or takedown requests.

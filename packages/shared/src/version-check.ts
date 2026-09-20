@@ -71,7 +71,8 @@ async function runCheck(current: string): Promise<UpdateInfo | null> {
       // bu da metadata cache sorununu tamamen ortadan kaldırır.
       permanentFix:
         "claude mcp remove reddit-radar && " +
-        "claude mcp add reddit-radar -e RADAR_API_KEY=<anahtarınız> -- npx -y --prefer-online reddit-radar",
+        "claude mcp add reddit-radar -e TYPESAFE_API_KEY=<anahtar> -e DEEPSEEK_API_KEY=<anahtar> " +
+        "-- npx -y --prefer-online reddit-radar",
     }
     return cached
   } catch {

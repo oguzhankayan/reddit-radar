@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest an idea or an improvement.
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to do that is hard or impossible today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: measurement
+    attributes:
+      label: How would we know it works?
+      description: |
+        If this touches classification, scoring, or retrieval, it needs a
+        measurement (see CONTRIBUTING.md). What metric moves, and how would you
+        check it?
+    validations:
+      required: false

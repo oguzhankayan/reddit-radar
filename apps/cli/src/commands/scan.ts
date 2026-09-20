@@ -2,7 +2,7 @@ import { runScan, type ScanPhase } from "../../../../packages/core/src/scan.ts"
 import type { PresetName } from "../../../../packages/classifiers/src/stage2.ts"
 
 /** CLI yüzü: v2 §32 terminal çıktısı. Boru hattı packages/core'da. */
-export async function scan(opts: { question: string; preset?: PresetName; target: number }): Promise<void> {
+export async function scan(opts: { question: string; preset?: PresetName; target: number; language?: string }): Promise<void> {
   const render = (e: ScanPhase) => {
     switch (e.phase) {
       case "planning": return void console.log("\nPlanning...")

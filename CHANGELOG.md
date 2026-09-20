@@ -6,6 +6,11 @@ All notable changes to this project are documented here. This project follows
 
 ## [0.5.0] — 2026-09-20
 
+> **Notice.** The hosted service (`redditradar.creativefactory.tr`) is
+> discontinued, and versions `0.1.0`–`0.4.0` are hosted builds that consume
+> server-side API keys. They are deprecated on npm. Use `0.5.0` or newer, which
+> runs entirely locally with your own keys, or install from source.
+
 ### Changed
 - **The product is now fully local (self-hosted).** The MCP runs the entire scan
   through `packages/core/src/scan.ts` in its own process: collection from real

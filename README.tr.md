@@ -62,7 +62,14 @@ Gereksinimler: **Node.js 20+** (MCP'nin kendisi için), **Google Chrome**
 LLM anahtarı OpenAI-uyumlu herhangi bir sağlayıcı olabilir; `.env` içinde
 `LLM_BASE_URL` ve `LLM_MODEL` ile değiştirin (OpenRouter, yerel vLLM, ...).
 
-### 2. MCP'yi Claude'a ekleyin
+### 2. Çalıştırın
+
+İki yol var; ikisi de birebir aynı kodu çalıştırır.
+
+**Yol A — npm (tek satır, en pratik).** npm paketi yalnız bir teslimat
+kolaylığıdır: bu repodaki kodu paketler ve yalnız Reddit'e, sizin anahtar
+sağlayıcılarınıza ve npm registry'sine (sürüm kontrolü) gider. Sunucu, hesap,
+ölçüm yok.
 
 ```bash
 claude mcp add reddit-radar \
@@ -74,7 +81,27 @@ claude mcp add reddit-radar \
 `--prefer-online` bilerek var: onsuz npm, "latest hangi sürüm" cevabını
 önbelleğe alıyor ve güncellemeler gecikebiliyor.
 
-Alternatif olarak anahtarları `~/.reddit-radar/.env` içine koyabilirsiniz; MCP
+**Yol B — kaynaktan (npm'siz).** Klonlayıp derleyin ve MCP'yi çıktı dosyasına
+yönlendirin:
+
+```bash
+git clone https://github.com/oguzhankayan/reddit-radar
+cd reddit-radar
+pnpm install          # Node 22+ ve pnpm gerekir
+pnpm build:mcp
+
+claude mcp add reddit-radar \
+  -e TYPESAFE_API_KEY=ts_xxx \
+  -e DEEPSEEK_API_KEY=sk-xxx \
+  -- node "$PWD/apps/mcp/dist/index.js"
+```
+
+Derleme Node 22+ ve pnpm ister; derlenmiş MCP Node 20+'ta çalışır. Güncelleme:
+`git pull && pnpm install && pnpm build:mcp`.
+
+### 3. Anahtarlar (her iki yolda da)
+
+`-e` yerine anahtarları `~/.reddit-radar/.env` içine koyabilirsiniz; MCP
 açılışta bu dosyayı okur. Var olan ortam değişkeni asla ezilmez.
 
 Reddit hesabı **gerekmez**. İlk taramada bir Chrome penceresi açılır; normaldir,

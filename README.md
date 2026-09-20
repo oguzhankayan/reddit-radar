@@ -64,7 +64,14 @@ Two keys are needed:
 The LLM key can be any OpenAI-compatible provider; override `LLM_BASE_URL` and
 `LLM_MODEL` in `.env` (OpenRouter, a local vLLM, ...).
 
-### 2. Add the MCP to Claude
+### 2. Run it
+
+Two ways. Pick one; both run exactly the same code.
+
+**Option A — npm (one line, quickest).** The npm package is only a delivery
+shortcut: it bundles this repository's code and talks to nothing but Reddit,
+your own key providers, and the npm registry (for the version check). There is
+no server, no account, and no metering.
 
 ```bash
 claude mcp add reddit-radar \
@@ -76,8 +83,28 @@ claude mcp add reddit-radar \
 `--prefer-online` is there on purpose: without it npm caches the "latest
 version" answer and updates can lag.
 
-Alternatively, put the keys in `~/.reddit-radar/.env`; the MCP reads that file
-at startup. An existing environment variable is never overwritten.
+**Option B — from source (no npm).** Clone, build, and point the MCP at the
+built file:
+
+```bash
+git clone https://github.com/oguzhankayan/reddit-radar
+cd reddit-radar
+pnpm install          # needs Node 22+ and pnpm
+pnpm build:mcp
+
+claude mcp add reddit-radar \
+  -e TYPESAFE_API_KEY=ts_xxx \
+  -e DEEPSEEK_API_KEY=sk-xxx \
+  -- node "$PWD/apps/mcp/dist/index.js"
+```
+
+The build needs Node 22+ and pnpm; the built MCP itself runs on Node 20+. To
+update: `git pull && pnpm install && pnpm build:mcp`.
+
+### 3. Keys, either way
+
+Instead of `-e`, you can put the keys in `~/.reddit-radar/.env`; the MCP reads
+that file at startup. An existing environment variable is never overwritten.
 
 A Reddit account is **not required**. The first scan opens a Chrome window;
 this is expected, do not close it.

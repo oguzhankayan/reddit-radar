@@ -28,6 +28,15 @@
     "model-context-protocol",
     "self-hosted"
   ],
+  "homepage": "https://github.com/oguzhankayan/reddit-radar#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oguzhankayan/reddit-radar.git",
+    "directory": "apps/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/oguzhankayan/reddit-radar/issues"
+  },
   "publishConfig": {
     "access": "public"
   }

@@ -20,6 +20,12 @@ claude mcp add reddit-radar \
 `--prefer-online` is there on purpose: without it npm caches the "latest
 version" answer and updates can lag.
 
+This npm package is only a delivery shortcut for the same code in the
+repository at https://github.com/oguzhankayan/reddit-radar — it has no server side
+and no account. Prefer to skip npm entirely? Clone the repo, run
+`pnpm install && pnpm build:mcp`, and add the MCP with
+`-- node <repo>/apps/mcp/dist/index.js`.
+
 You need two keys and nothing else. No Reddit account. Chrome must be installed
 — the first scan opens a window; do not close it.
 

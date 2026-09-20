@@ -1,0 +1,31 @@
+{
+  "name": "reddit-radar",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "radar": "node --env-file=.env apps/cli/src/index.ts",
+    "mcp": "node --env-file=.env apps/mcp/src/index.ts",
+    "test": "vitest run",
+    "build:mcp": "cd apps/mcp && node build.mjs",
+    "deploy:api": "cd apps/api && wrangler deploy",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p apps/api/tsconfig.json"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260919.1",
+    "@types/node": "^22.20.3",
+    "esbuild": "^0.28.2",
+    "hono": "^4.13.8",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@typesafe-ai/sdk": "^0.6.0",
+    "playwright": "^1.63.0",
+    "zod": "^4.6.5"
+  }
+}

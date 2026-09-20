@@ -1,0 +1,1512 @@
+{
+ "kind": "Listing",
+ "data": {
+  "after": "t3_1wk04g7",
+  "dist": 100,
+  "modhash": "",
+  "geo_filter": "",
+  "children": [
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkzsu2",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 0",
+     "selftext": "",
+     "created_utc": 1789857509,
+     "score": 1,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkzsu2/how_do_you_build_good_launch_video_on_a_budget/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkzsu2/how_do_you_build_good_launch_video_on_a_budget/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkzma6",
+     "subreddit": "SaaS",
+     "author": "redacted_user_1",
+     "title": "Redacted title 1",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789857030,
+     "score": 1,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkzma6/i_launched_my_mobile_app_on_the_play_store_after/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkzma6/i_launched_my_mobile_app_on_the_play_store_after/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkytaz",
+     "subreddit": "SaaS",
+     "author": "redacted_user_2",
+     "title": "Redacted title 2",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789854973,
+     "score": 2,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkytaz/i_made_a_science_proofed_free_color_palette/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkytaz/i_made_a_science_proofed_free_color_palette/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkyb20",
+     "subreddit": "SaaS",
+     "author": "redacted_user_3",
+     "title": "Redacted title 3",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789853660,
+     "score": 1,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wkyb20/should_i_quit_my_job_even_though_i_dont_have/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkyb20/should_i_quit_my_job_even_though_i_dont_have/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkx666",
+     "subreddit": "SaaS",
+     "author": "redacted_user_4",
+     "title": "Redacted title 4",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789850869,
+     "score": 1,
+     "num_comments": 1,
+     "permalink": "/r/SaaS/comments/1wkx666/52k_vc_investor_database/",
+     "url": "https://i.redd.it/jnl6g6qqgjqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkwmop",
+     "subreddit": "SaaS",
+     "author": "redacted_user_5",
+     "title": "Redacted title 5",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789849547,
+     "score": 0,
+     "num_comments": 8,
+     "permalink": "/r/SaaS/comments/1wkwmop/how_does_saas_work/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkwmop/how_does_saas_work/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkwif9",
+     "subreddit": "SaaS",
+     "author": "redacted_user_6",
+     "title": "Redacted title 6",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789849261,
+     "score": 2,
+     "num_comments": 1,
+     "permalink": "/r/SaaS/comments/1wkwif9/i_want_you_review_on_this_survey/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkwif9/i_want_you_review_on_this_survey/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkwfd0",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 7",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789849057,
+     "score": 2,
+     "num_comments": 22,
+     "permalink": "/r/SaaS/comments/1wkwfd0/how_should_i_price_and_sell_a_b2b_saas_that_could/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkwfd0/how_should_i_price_and_sell_a_b2b_saas_that_could/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkwbce",
+     "subreddit": "SaaS",
+     "author": "redacted_user_8",
+     "title": "Redacted title 8",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789848791,
+     "score": 1,
+     "num_comments": 4,
+     "permalink": "/r/SaaS/comments/1wkwbce/how_do_you_read_your_saas_data/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkwbce/how_do_you_read_your_saas_data/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkvrvn",
+     "subreddit": "SaaS",
+     "author": "redacted_user_9",
+     "title": "Redacted title 9",
+     "selftext": "",
+     "created_utc": 1789847517,
+     "score": 15,
+     "num_comments": 26,
+     "permalink": "/r/SaaS/comments/1wkvrvn/run_from_paddle_processor/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkvrvn/run_from_paddle_processor/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkvl7m",
+     "subreddit": "SaaS",
+     "author": "redacted_user_10",
+     "title": "Redacted title 10",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789847068,
+     "score": 6,
+     "num_comments": 10,
+     "permalink": "/r/SaaS/comments/1wkvl7m/do_something_you_are_passionate_about_is_half/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkvl7m/do_something_you_are_passionate_about_is_half/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkvgsk",
+     "subreddit": "SaaS",
+     "author": "redacted_user_11",
+     "title": "Redacted title 11",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789846773,
+     "score": 1,
+     "num_comments": 1,
+     "permalink": "/r/SaaS/comments/1wkvgsk/i_made_a_rumblefighter_clone_with_formfromlight/",
+     "url": "https://v.redd.it/cfaawhyc5jqh1"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkuzne",
+     "subreddit": "SaaS",
+     "author": "redacted_user_12",
+     "title": "Redacted title 12",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789845632,
+     "score": 0,
+     "num_comments": 22,
+     "permalink": "/r/SaaS/comments/1wkuzne/built_a_tool_that_reads_your_code_and_tells_you/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkuzne/built_a_tool_that_reads_your_code_and_tells_you/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkuywh",
+     "subreddit": "SaaS",
+     "author": "redacted_user_13",
+     "title": "Redacted title 13",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789845580,
+     "score": 1,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkuywh/test_my_internet_scanner_built_with_jev/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkuywh/test_my_internet_scanner_built_with_jev/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkuits",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 14",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789844545,
+     "score": 1,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wkuits/help_me_with_my_high_school_business_studies/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkuits/help_me_with_my_high_school_business_studies/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkuiq8",
+     "subreddit": "SaaS",
+     "author": "redacted_user_15",
+     "title": "Redacted title 15",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789844539,
+     "score": 1,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wkuiq8/are_webinars_still_worth_doing_for_b2b_saas/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkuiq8/are_webinars_still_worth_doing_for_b2b_saas/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wku0en",
+     "subreddit": "SaaS",
+     "author": "redacted_user_16",
+     "title": "Redacted title 16",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789843357,
+     "score": 2,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wku0en/built_a_bookkeeping_app_for_my_own_small_business/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wku0en/built_a_bookkeeping_app_for_my_own_small_business/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wktych",
+     "subreddit": "SaaS",
+     "author": "redacted_user_17",
+     "title": "Redacted title 17",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789843223,
+     "score": 0,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wktych/this_99_is_gonna_make_me_a_founder/",
+     "url": "https://v.redd.it/17gkajlsuiqh1"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wksz20",
+     "subreddit": "SaaS",
+     "author": "redacted_user_18",
+     "title": "Redacted title 18",
+     "selftext": "",
+     "created_utc": 1789840907,
+     "score": 3,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wksz20/been_building_a_typescriptfirst_mock_api_tool/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wksz20/been_building_a_typescriptfirst_mock_api_tool/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wksvdc",
+     "subreddit": "SaaS",
+     "author": "redacted_user_19",
+     "title": "Redacted title 19",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789840676,
+     "score": 0,
+     "num_comments": 7,
+     "permalink": "/r/SaaS/comments/1wksvdc/resigned/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wksvdc/resigned/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wksqn9",
+     "subreddit": "SaaS",
+     "author": "redacted_user_20",
+     "title": "Redacted title 20",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789840361,
+     "score": 2,
+     "num_comments": 8,
+     "permalink": "/r/SaaS/comments/1wksqn9/saas_with_primary_job/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wksqn9/saas_with_primary_job/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wksf0c",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 21",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789839580,
+     "score": 3,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wksf0c/need_people_to_try_your_project_i_struggled_with/",
+     "url": "https://i.redd.it/emojy31vjiqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkseig",
+     "subreddit": "SaaS",
+     "author": "redacted_user_22",
+     "title": "Redacted title 22",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789839546,
+     "score": 3,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wkseig/where_will_your_next_10_customers_come_from/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkseig/where_will_your_next_10_customers_come_from/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wksbpi",
+     "subreddit": "SaaS",
+     "author": "redacted_user_23",
+     "title": "Redacted title 23",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789839361,
+     "score": 1,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wksbpi/built_a_free_site_to_maintain_my_mental_well/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wksbpi/built_a_free_site_to_maintain_my_mental_well/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wks579",
+     "subreddit": "SaaS",
+     "author": "redacted_user_24",
+     "title": "Redacted title 24",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789838929,
+     "score": 1,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wks579/the_inverted_v_syndrom_with_saas_products/",
+     "url": "https://i.redd.it/y7ozyqx0iiqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wks17r",
+     "subreddit": "SaaS",
+     "author": "redacted_user_25",
+     "title": "Redacted title 25",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789838664,
+     "score": 1,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wks17r/my_ai_appneed_advice/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wks17r/my_ai_appneed_advice/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkrpd1",
+     "subreddit": "SaaS",
+     "author": "redacted_user_26",
+     "title": "Redacted title 26",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789837875,
+     "score": 1,
+     "num_comments": 4,
+     "permalink": "/r/SaaS/comments/1wkrpd1/built_my_first_saas_trying_to_land_my_first_sale/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkrpd1/built_my_first_saas_trying_to_land_my_first_sale/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkrjq1",
+     "subreddit": "SaaS",
+     "author": "redacted_user_27",
+     "title": "Redacted title 27",
+     "selftext": "",
+     "created_utc": 1789837511,
+     "score": 2,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkrjq1/upvotes_are_a_terrible_proxy_for_pain_what_i_look/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkrjq1/upvotes_are_a_terrible_proxy_for_pain_what_i_look/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkr6wn",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 28",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789836675,
+     "score": 1,
+     "num_comments": 9,
+     "permalink": "/r/SaaS/comments/1wkr6wn/shipped_my_first_saas_and_i_think_i_picked_the/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkr6wn/shipped_my_first_saas_and_i_think_i_picked_the/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkr1xe",
+     "subreddit": "SaaS",
+     "author": "redacted_user_29",
+     "title": "Redacted title 29",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789836339,
+     "score": 0,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkr1xe/5_years_in_marketing_heres_what_ive_learned/",
+     "url": "https://i.redd.it/3znr1qxcaiqh1.jpeg"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkqzn1",
+     "subreddit": "SaaS",
+     "author": "redacted_user_30",
+     "title": "Redacted title 30",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789836193,
+     "score": 18,
+     "num_comments": 10,
+     "permalink": "/r/SaaS/comments/1wkqzn1/3_months_of_building_finally_got_my_first_user/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkqzn1/3_months_of_building_finally_got_my_first_user/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkqscz",
+     "subreddit": "SaaS",
+     "author": "redacted_user_31",
+     "title": "Redacted title 31",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789835702,
+     "score": 0,
+     "num_comments": 1,
+     "permalink": "/r/SaaS/comments/1wkqscz/kodak_invented_the_digital_camera_so_why_did/",
+     "url": "https://i.redd.it/ykf4put58iqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkq6sa",
+     "subreddit": "SaaS",
+     "author": "redacted_user_32",
+     "title": "Redacted title 32",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789834259,
+     "score": 2,
+     "num_comments": 7,
+     "permalink": "/r/SaaS/comments/1wkq6sa/which_is_better/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkq6sa/which_is_better/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkq3cl",
+     "subreddit": "SaaS",
+     "author": "redacted_user_33",
+     "title": "Redacted title 33",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789834031,
+     "score": 1,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkq3cl/switching_from_a_subscription_to_charging_only_on/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkq3cl/switching_from_a_subscription_to_charging_only_on/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkq20b",
+     "subreddit": "SaaS",
+     "author": "redacted_user_34",
+     "title": "Redacted title 34",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789833944,
+     "score": 1,
+     "num_comments": 1,
+     "permalink": "/r/SaaS/comments/1wkq20b/i_left_100_comments_in_3_weeks_the_only_one_that/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkq20b/i_left_100_comments_in_3_weeks_the_only_one_that/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkpycm",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 35",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789833700,
+     "score": 0,
+     "num_comments": 11,
+     "permalink": "/r/SaaS/comments/1wkpycm/i_built_a_personal_ai_platform_and_im_looking_for/",
+     "url": "https://i.redd.it/ysffgulg2iqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkpyah",
+     "subreddit": "SaaS",
+     "author": "redacted_user_36",
+     "title": "Redacted title 36",
+     "selftext": "",
+     "created_utc": 1789833696,
+     "score": 2,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkpyah/developer_looking_for_a_startup_to_join/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkpyah/developer_looking_for_a_startup_to_join/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkpocd",
+     "subreddit": "SaaS",
+     "author": "redacted_user_37",
+     "title": "Redacted title 37",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789833043,
+     "score": 2,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkpocd/i_open_sourced_a_form_engine_you_can_embed_in/",
+     "url": "https://i.redd.it/4aif5gfqzhqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkpi5j",
+     "subreddit": "SaaS",
+     "author": "redacted_user_38",
+     "title": "Redacted title 38",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789832619,
+     "score": 3,
+     "num_comments": 4,
+     "permalink": "/r/SaaS/comments/1wkpi5j/i_built_a_b2b_saas_for_us_healthcare_privacy/",
+     "url": "https://v.redd.it/5txus89azhqh1"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkp62r",
+     "subreddit": "SaaS",
+     "author": "redacted_user_39",
+     "title": "Redacted title 39",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789831774,
+     "score": 4,
+     "num_comments": 8,
+     "permalink": "/r/SaaS/comments/1wkp62r/pdf_automation_and_invoice_processing_webapp/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkp62r/pdf_automation_and_invoice_processing_webapp/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkp0fa",
+     "subreddit": "SaaS",
+     "author": "redacted_user_40",
+     "title": "Redacted title 40",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789831379,
+     "score": 5,
+     "num_comments": 26,
+     "permalink": "/r/SaaS/comments/1wkp0fa/protecting_your_work/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkp0fa/protecting_your_work/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkoz9x",
+     "subreddit": "SaaS",
+     "author": "redacted_user_41",
+     "title": "Redacted title 41",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789831294,
+     "score": 2,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wkoz9x/here_is_a_saas_idea/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkoz9x/here_is_a_saas_idea/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkodsc",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 42",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789829835,
+     "score": 1,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wkodsc/i_built_an_app_to_recreate_an_experience_i_had_at/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkodsc/i_built_an_app_to_recreate_an_experience_i_had_at/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkoair",
+     "subreddit": "SaaS",
+     "author": "redacted_user_43",
+     "title": "Redacted title 43",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789829610,
+     "score": 1,
+     "num_comments": 5,
+     "permalink": "/r/SaaS/comments/1wkoair/what_free_hosting_apis_or_tools_did_you_find_that/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkoair/what_free_hosting_apis_or_tools_did_you_find_that/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wko72q",
+     "subreddit": "SaaS",
+     "author": "redacted_user_44",
+     "title": "Redacted title 44",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789829372,
+     "score": 2,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wko72q/what_can_i_improve_in_this_landing_page/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wko72q/what_can_i_improve_in_this_landing_page/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wko4e3",
+     "subreddit": "SaaS",
+     "author": "redacted_user_45",
+     "title": "Redacted title 45",
+     "selftext": "",
+     "created_utc": 1789829183,
+     "score": 1,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wko4e3/traceux_a_small_selfhosted_ux_toolkit_for_web/",
+     "url": "https://trace-ux.builtbyfrank.dev"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkmmjk",
+     "subreddit": "SaaS",
+     "author": "redacted_user_46",
+     "title": "Redacted title 46",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789825428,
+     "score": 1,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkmmjk/80m_smes_across_india_the_gcc/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkmmjk/80m_smes_across_india_the_gcc/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkmbyy",
+     "subreddit": "SaaS",
+     "author": "redacted_user_47",
+     "title": "Redacted title 47",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789824664,
+     "score": 0,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkmbyy/i_posted_58_comments_in_8_days_before_mentioning/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkmbyy/i_posted_58_comments_in_8_days_before_mentioning/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkmb5t",
+     "subreddit": "SaaS",
+     "author": "redacted_user_48",
+     "title": "Redacted title 48",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789824606,
+     "score": 0,
+     "num_comments": 5,
+     "permalink": "/r/SaaS/comments/1wkmb5t/funds_for_small_devs/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkmb5t/funds_for_small_devs/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wklss6",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 49",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789823241,
+     "score": 33,
+     "num_comments": 28,
+     "permalink": "/r/SaaS/comments/1wklss6/my_first_customer_came_completely_unexpectedly/",
+     "url": "https://i.redd.it/vcuntnw67hqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkleuv",
+     "subreddit": "SaaS",
+     "author": "redacted_user_50",
+     "title": "Redacted title 50",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789822188,
+     "score": 21,
+     "num_comments": 44,
+     "permalink": "/r/SaaS/comments/1wkleuv/how_did_you_find_the_idea_that_got_you_first/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkleuv/how_did_you_find_the_idea_that_got_you_first/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkl6ke",
+     "subreddit": "SaaS",
+     "author": "redacted_user_51",
+     "title": "Redacted title 51",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789821547,
+     "score": 0,
+     "num_comments": 29,
+     "permalink": "/r/SaaS/comments/1wkl6ke/how_do_you_actually_find_saas_ideas/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkl6ke/how_do_you_actually_find_saas_ideas/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkl2hg",
+     "subreddit": "SaaS",
+     "author": "redacted_user_52",
+     "title": "Redacted title 52",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789821234,
+     "score": 0,
+     "num_comments": 16,
+     "permalink": "/r/SaaS/comments/1wkl2hg/do_these_ai_companies_track_our_chat_and_steal/",
+     "url": "https://i.redd.it/1dx3xp7a1hqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkkwr6",
+     "subreddit": "SaaS",
+     "author": "redacted_user_53",
+     "title": "Redacted title 53",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789820786,
+     "score": 0,
+     "num_comments": 43,
+     "permalink": "/r/SaaS/comments/1wkkwr6/cold_email_is_not_dead_i_just_proved_it_to_myself/",
+     "url": "https://i.redd.it/etcgufv20hqh1.jpeg"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkkjo4",
+     "subreddit": "SaaS",
+     "author": "redacted_user_54",
+     "title": "Redacted title 54",
+     "selftext": "",
+     "created_utc": 1789819727,
+     "score": 6,
+     "num_comments": 20,
+     "permalink": "/r/SaaS/comments/1wkkjo4/starting_saas_in_highschool_need_some_advice/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkkjo4/starting_saas_in_highschool_need_some_advice/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkkj7c",
+     "subreddit": "SaaS",
+     "author": "redacted_user_55",
+     "title": "Redacted title 55",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789819688,
+     "score": 0,
+     "num_comments": 6,
+     "permalink": "/r/SaaS/comments/1wkkj7c/made_this_ad_for_deiko_please_rate_it/",
+     "url": "https://v.redd.it/48urfwzcvgqh1"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkkea9",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 56",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789819295,
+     "score": 2,
+     "num_comments": 5,
+     "permalink": "/r/SaaS/comments/1wkkea9/for_senior_developers_do_you_think_i_should_enter/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkkea9/for_senior_developers_do_you_think_i_should_enter/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkk5zu",
+     "subreddit": "SaaS",
+     "author": "redacted_user_57",
+     "title": "Redacted title 57",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789818631,
+     "score": 0,
+     "num_comments": 9,
+     "permalink": "/r/SaaS/comments/1wkk5zu/how_do_you_stop_an_ai_agent_from_doing_something/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkk5zu/how_do_you_stop_an_ai_agent_from_doing_something/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkj42k",
+     "subreddit": "SaaS",
+     "author": "redacted_user_58",
+     "title": "Redacted title 58",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789815241,
+     "score": 15,
+     "num_comments": 56,
+     "permalink": "/r/SaaS/comments/1wkj42k/saas_founders_whats_your_biggest_pain_right_now/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkj42k/saas_founders_whats_your_biggest_pain_right_now/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wki6li",
+     "subreddit": "SaaS",
+     "author": "redacted_user_59",
+     "title": "Redacted title 59",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789812077,
+     "score": 1,
+     "num_comments": 4,
+     "permalink": "/r/SaaS/comments/1wki6li/7_things_i_noticed_in_ai_memory_recently/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wki6li/7_things_i_noticed_in_ai_memory_recently/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkhqqe",
+     "subreddit": "SaaS",
+     "author": "redacted_user_60",
+     "title": "Redacted title 60",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789810513,
+     "score": 1,
+     "num_comments": 6,
+     "permalink": "/r/SaaS/comments/1wkhqqe/i_think_social_media_schedulers_are_about_to/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkhqqe/i_think_social_media_schedulers_are_about_to/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkhq69",
+     "subreddit": "SaaS",
+     "author": "redacted_user_61",
+     "title": "Redacted title 61",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789810459,
+     "score": 2,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkhq69/i_built_a_windows_screen_recorder_because_i_kept/",
+     "url": "https://v.redd.it/ddkor9m24gqh1"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkh0a1",
+     "subreddit": "SaaS",
+     "author": "redacted_user_62",
+     "title": "Redacted title 62",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789807883,
+     "score": 1,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wkh0a1/paste_the_exact_message_that_got_you_your_last/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkh0a1/paste_the_exact_message_that_got_you_your_last/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkgsdv",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 63",
+     "selftext": "",
+     "created_utc": 1789807093,
+     "score": 0,
+     "num_comments": 6,
+     "permalink": "/r/SaaS/comments/1wkgsdv/how_i_market_my_saas_i_think_differently_im_not/",
+     "url": "https://i.redd.it/p7fgtvgevfqh1.jpeg"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkghrl",
+     "subreddit": "SaaS",
+     "author": "redacted_user_64",
+     "title": "Redacted title 64",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789806037,
+     "score": 0,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkghrl/officially_a_claude_partner_how_we_built_a/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkghrl/officially_a_claude_partner_how_we_built_a/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkgf0y",
+     "subreddit": "SaaS",
+     "author": "redacted_user_65",
+     "title": "Redacted title 65",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789805768,
+     "score": 1,
+     "num_comments": 13,
+     "permalink": "/r/SaaS/comments/1wkgf0y/i_wasted_a_month_building_i_dont_want_to_repeat_it/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkgf0y/i_wasted_a_month_building_i_dont_want_to_repeat_it/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkgcem",
+     "subreddit": "SaaS",
+     "author": "redacted_user_66",
+     "title": "Redacted title 66",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789805506,
+     "score": 2,
+     "num_comments": 9,
+     "permalink": "/r/SaaS/comments/1wkgcem/terrible_things_about_saas_founder/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkgcem/terrible_things_about_saas_founder/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkg7o5",
+     "subreddit": "SaaS",
+     "author": "redacted_user_67",
+     "title": "Redacted title 67",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789805050,
+     "score": 2,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wkg7o5/i_built_a_simple_invoicing_app_and_im_looking_for/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkg7o5/i_built_a_simple_invoicing_app_and_im_looking_for/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkfzn4",
+     "subreddit": "SaaS",
+     "author": "redacted_user_68",
+     "title": "Redacted title 68",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789804283,
+     "score": 0,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkfzn4/if_you_want_to_get_scammed_and_lose_your_money/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkfzn4/if_you_want_to_get_scammed_and_lose_your_money/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkfx2h",
+     "subreddit": "SaaS",
+     "author": "redacted_user_69",
+     "title": "Redacted title 69",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789804030,
+     "score": 2,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkfx2h/my_first_game/",
+     "url": "https://v.redd.it/31okgo4amfqh1"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkfqba",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 70",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789803372,
+     "score": 47,
+     "num_comments": 18,
+     "permalink": "/r/SaaS/comments/1wkfqba/ai_turned_everyone_into_a_code_generator_it/",
+     "url": "https://i.redd.it/f7n6kz97kfqh1.jpeg"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkfp02",
+     "subreddit": "SaaS",
+     "author": "redacted_user_71",
+     "title": "Redacted title 71",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789803240,
+     "score": 2,
+     "num_comments": 7,
+     "permalink": "/r/SaaS/comments/1wkfp02/paid_beta_starts_in_a_couple_weeks_what_did_you/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkfp02/paid_beta_starts_in_a_couple_weeks_what_did_you/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkfnq8",
+     "subreddit": "SaaS",
+     "author": "redacted_user_72",
+     "title": "Redacted title 72",
+     "selftext": "",
+     "created_utc": 1789803120,
+     "score": 1,
+     "num_comments": 11,
+     "permalink": "/r/SaaS/comments/1wkfnq8/finding_clients/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkfnq8/finding_clients/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkf7zl",
+     "subreddit": "SaaS",
+     "author": "redacted_user_73",
+     "title": "Redacted title 73",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789801623,
+     "score": 2,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkf7zl/is_there_any_sense_in_doing_this_for_real/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkf7zl/is_there_any_sense_in_doing_this_for_real/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkf0o5",
+     "subreddit": "SaaS",
+     "author": "redacted_user_74",
+     "title": "Redacted title 74",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789800965,
+     "score": 1,
+     "num_comments": 12,
+     "permalink": "/r/SaaS/comments/1wkf0o5/how_are_you_handling_database_provisioning_for/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkf0o5/how_are_you_handling_database_provisioning_for/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkey3g",
+     "subreddit": "SaaS",
+     "author": "redacted_user_75",
+     "title": "Redacted title 75",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789800718,
+     "score": 6,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkey3g/ultimate_feedback_loop_for_improving_my_saas/",
+     "url": "https://v.redd.it/vtz9acoacfqh1"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkevuu",
+     "subreddit": "SaaS",
+     "author": "redacted_user_76",
+     "title": "Redacted title 76",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789800504,
+     "score": 1,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wkevuu/revshareeuuk_fullstack_dev_nextjssupabase_looking/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkevuu/revshareeuuk_fullstack_dev_nextjssupabase_looking/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkeu7m",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 77",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789800348,
+     "score": 2,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkeu7m/would_you_benefit_from_wagtail_cms_boilerplate/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkeu7m/would_you_benefit_from_wagtail_cms_boilerplate/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkedk5",
+     "subreddit": "SaaS",
+     "author": "redacted_user_78",
+     "title": "Redacted title 78",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789798829,
+     "score": 0,
+     "num_comments": 45,
+     "permalink": "/r/SaaS/comments/1wkedk5/im_17_and_i_just_built_my_first_saas/",
+     "url": "https://i.redd.it/pj27eoge6fqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkdt23",
+     "subreddit": "SaaS",
+     "author": "redacted_user_79",
+     "title": "Redacted title 79",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789796951,
+     "score": 2,
+     "num_comments": 11,
+     "permalink": "/r/SaaS/comments/1wkdt23/i_started_building_a_b2b_lead_generation_sales/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkdt23/i_started_building_a_b2b_lead_generation_sales/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkcy0r",
+     "subreddit": "SaaS",
+     "author": "redacted_user_80",
+     "title": "Redacted title 80",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789794236,
+     "score": 57,
+     "num_comments": 38,
+     "permalink": "/r/SaaS/comments/1wkcy0r/remember_n8n_anyone/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkcy0r/remember_n8n_anyone/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkcam7",
+     "subreddit": "SaaS",
+     "author": "redacted_user_81",
+     "title": "Redacted title 81",
+     "selftext": "",
+     "created_utc": 1789792214,
+     "score": 6,
+     "num_comments": 30,
+     "permalink": "/r/SaaS/comments/1wkcam7/i_got_20_users_for_the_first_version_of_doodlyo/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkcam7/i_got_20_users_for_the_first_version_of_doodlyo/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkc0hn",
+     "subreddit": "SaaS",
+     "author": "redacted_user_82",
+     "title": "Redacted title 82",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789791329,
+     "score": 2,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkc0hn/vibe_coding_did_not_kill_making_money_out_of/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkc0hn/vibe_coding_did_not_kill_making_money_out_of/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkbub3",
+     "subreddit": "SaaS",
+     "author": "redacted_user_83",
+     "title": "Redacted title 83",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789790805,
+     "score": 0,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wkbub3/i_got_so_sick_of_recreating_my_resume_for_each/",
+     "url": "https://i.redd.it/ueu9rkaggeqh1.png"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkb6os",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 84",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789788829,
+     "score": 1,
+     "num_comments": 2,
+     "permalink": "/r/SaaS/comments/1wkb6os/which_ai_infographic_generators_support_brand/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkb6os/which_ai_infographic_generators_support_brand/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wkarq1",
+     "subreddit": "SaaS",
+     "author": "redacted_user_85",
+     "title": "Redacted title 85",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789787595,
+     "score": 0,
+     "num_comments": 1,
+     "permalink": "/r/SaaS/comments/1wkarq1/whatsapp_api_phone_number_registration_failing/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wkarq1/whatsapp_api_phone_number_registration_failing/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wka6jp",
+     "subreddit": "SaaS",
+     "author": "redacted_user_86",
+     "title": "Redacted title 86",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789785878,
+     "score": 2,
+     "num_comments": 5,
+     "permalink": "/r/SaaS/comments/1wka6jp/i_got_tired_of_wiring_youtube_transcripts_into_my/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wka6jp/i_got_tired_of_wiring_youtube_transcripts_into_my/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk8yzy",
+     "subreddit": "SaaS",
+     "author": "redacted_user_87",
+     "title": "Redacted title 87",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789782375,
+     "score": 2,
+     "num_comments": 1,
+     "permalink": "/r/SaaS/comments/1wk8yzy/the_unit_economics_of_running_multimodal_video/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wk8yzy/the_unit_economics_of_running_multimodal_video/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk8x0f",
+     "subreddit": "SaaS",
+     "author": "redacted_user_88",
+     "title": "Redacted title 88",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789782207,
+     "score": 1,
+     "num_comments": 4,
+     "permalink": "/r/SaaS/comments/1wk8x0f/built_an_open_source_agentic_development/",
+     "url": "https://i.redd.it/b8ly6fxvsdqh1.gif"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk8hq3",
+     "subreddit": "SaaS",
+     "author": "redacted_user_89",
+     "title": "Redacted title 89",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789780994,
+     "score": 2,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wk8hq3/advertising_founding_clients/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wk8hq3/advertising_founding_clients/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk8al7",
+     "subreddit": "SaaS",
+     "author": "redacted_user_90",
+     "title": "Redacted title 90",
+     "selftext": "",
+     "created_utc": 1789780432,
+     "score": 1,
+     "num_comments": 0,
+     "permalink": "/r/SaaS/comments/1wk8al7/i_built_a_marketplace_that_reviews_every_mvp_by/",
+     "url": "https://i.redd.it/ro8udgh4odqh1.jpeg"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk863i",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 91",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789780084,
+     "score": 1,
+     "num_comments": 14,
+     "permalink": "/r/SaaS/comments/1wk863i/how_are_you_guys_handling_ai_api_costs_for_b2c/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wk863i/how_are_you_guys_handling_ai_api_costs_for_b2c/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk679v",
+     "subreddit": "SaaS",
+     "author": "redacted_user_92",
+     "title": "Redacted title 92",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789774847,
+     "score": 3,
+     "num_comments": 1,
+     "permalink": "/r/SaaS/comments/1wk679v/built_a_free_jailbreakpii_detector_for_ai_agents/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wk679v/built_a_free_jailbreakpii_detector_for_ai_agents/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk5abc",
+     "subreddit": "SaaS",
+     "author": "redacted_user_93",
+     "title": "Redacted title 93",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789772483,
+     "score": 84,
+     "num_comments": 56,
+     "permalink": "/r/SaaS/comments/1wk5abc/i_built_a_bot_that_finds_apartment_owners_with_no/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wk5abc/i_built_a_bot_that_finds_apartment_owners_with_no/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk4rbe",
+     "subreddit": "SaaS",
+     "author": "redacted_user_94",
+     "title": "Redacted title 94",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789771152,
+     "score": 1394,
+     "num_comments": 147,
+     "permalink": "/r/SaaS/comments/1wk4rbe/ai_made_everyone_a_builder_it_forgot_to_make_more/",
+     "url": "https://i.redd.it/4ecvs7xgwcqh1.jpeg"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk4p8o",
+     "subreddit": "SaaS",
+     "author": "redacted_user_95",
+     "title": "Redacted title 95",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789771011,
+     "score": 0,
+     "num_comments": 8,
+     "permalink": "/r/SaaS/comments/1wk4p8o/week_1_of_building_a_ui_library_that_tries_to_fix/",
+     "url": "https://v.redd.it/50h14ztovcqh1"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk47i3",
+     "subreddit": "SaaS",
+     "author": "redacted_user_96",
+     "title": "Redacted title 96",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789769796,
+     "score": 1,
+     "num_comments": 7,
+     "permalink": "/r/SaaS/comments/1wk47i3/how_do_you_decide_what_goes_in_your_product/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wk47i3/how_do_you_decide_what_goes_in_your_product/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk33ef",
+     "subreddit": "SaaS",
+     "author": "redacted_user_97",
+     "title": "Redacted title 97",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789767080,
+     "score": 1,
+     "num_comments": 13,
+     "permalink": "/r/SaaS/comments/1wk33ef/rejected_by_appsumo_on_day_2_how_do_you_find/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wk33ef/rejected_by_appsumo_on_day_2_how_do_you_find/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk2r7p",
+     "subreddit": "SaaS",
+     "author": "[deleted]",
+     "title": "Redacted title 98",
+     "selftext": "Redacted body text for fixture purposes. Redacted body text for fixture purposes. Redacted body text for fixture purposes. ",
+     "created_utc": 1789766279,
+     "score": 1,
+     "num_comments": 3,
+     "permalink": "/r/SaaS/comments/1wk2r7p/payment_service_provider_selection_for_smbs/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wk2r7p/payment_service_provider_selection_for_smbs/"
+    }
+   },
+   {
+    "kind": "t3",
+    "data": {
+     "name": "t3_1wk04g7",
+     "subreddit": "SaaS",
+     "author": "redacted_user_99",
+     "title": "Redacted title 99",
+     "selftext": "",
+     "created_utc": 1789760251,
+     "score": 2,
+     "num_comments": 13,
+     "permalink": "/r/SaaS/comments/1wk04g7/eplatform_social_media_ads_struggling/",
+     "url": "https://www.reddit.com/r/SaaS/comments/1wk04g7/eplatform_social_media_ads_struggling/"
+    }
+   }
+  ],
+  "before": null
+ }
+}

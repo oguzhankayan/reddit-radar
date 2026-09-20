@@ -1,0 +1,16 @@
+node_modules/
+dist/
+*.local
+.env
+scratch/
+
+# Ham Reddit metni repoya girmez — 48 saatlik saklama politikasıyla çelişir
+# ve binlerce gerçek kullanıcının tam gövdesini kalıcılaştırır.
+# Testler redakte edilmiş listing-sample.json kullanır.
+tests/fixtures/*.ndjson
+tests/fixtures/www_*.json
+tests/golden/labels.json
+docs/bench-top20-validate.md
+out/
+.radar-key
+dist/

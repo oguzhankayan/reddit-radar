@@ -1,5 +1,12 @@
 # Reddit Radar
 
+[![CI](https://github.com/oguzhankayan/reddit-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/oguzhankayan/reddit-radar/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org)
+[![npm](https://img.shields.io/npm/v/reddit-radar.svg)](https://www.npmjs.com/package/reddit-radar)
+[![MCP](https://img.shields.io/badge/MCP-server-blue.svg)](https://modelcontextprotocol.io)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 A fully local MCP server that takes a research question in plain language,
 semantically classifies thousands of Reddit posts, and returns structured
 market intelligence **with real Reddit evidence behind every claim**.
@@ -41,8 +48,9 @@ It answers two questions, both grounded in evidence:
 
 ## Install
 
-Requirements: **Node.js 20+**, **Google Chrome** (installed), **pnpm** (only for
-the developer setup).
+Requirements: **Node.js 20+** to run (the MCP itself), **Google Chrome**
+(installed). Contributing additionally needs **Node.js 22+** and **pnpm** for
+the workspace toolchain — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### 1. API keys
 

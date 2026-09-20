@@ -1,5 +1,12 @@
 # Reddit Radar
 
+[![CI](https://github.com/oguzhankayan/reddit-radar/actions/workflows/ci.yml/badge.svg)](https://github.com/oguzhankayan/reddit-radar/actions/workflows/ci.yml)
+[![Lisans: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)](https://nodejs.org)
+[![npm](https://img.shields.io/npm/v/reddit-radar.svg)](https://www.npmjs.com/package/reddit-radar)
+[![MCP](https://img.shields.io/badge/MCP-server-blue.svg)](https://modelcontextprotocol.io)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 Doğal dilde bir araştırma sorusunu alıp binlerce Reddit postunu semantic olarak
 sınıflandıran, **her iddianın altında gerçek Reddit kanıtı olan** yapılandırılmış
 pazar zekâsı üreten, tamamen yerel bir MCP sunucusu.
@@ -39,8 +46,9 @@ API anahtarlarınız ve sisteminizdeki Chrome gerekir.
 
 ## Kurulum
 
-Gereksinimler: **Node.js 20+**, **Google Chrome** (sistemde kurulu), **pnpm**
-(yalnız geliştirici kurulumu için).
+Gereksinimler: **Node.js 20+** (MCP'nin kendisi için), **Google Chrome**
+(sistemde kurulu). Katkı için ayrıca **Node.js 22+** ve **pnpm** gerekir
+(workspace araç zinciri) — bkz. [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### 1. API anahtarları
 

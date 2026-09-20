@@ -15,8 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      # The published MCP runs on Node 20+, but the pnpm workspace toolchain
+      # (pnpm 11) requires Node 22.13+. CI therefore tests the dev toolchain on
+      # 22/24; Node 20 runtime support is documented, not gated here.
       matrix:
-        node: [20, 22]
+        node: [22, 24]
     steps:
       - uses: actions/checkout@v4
 

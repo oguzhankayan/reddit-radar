@@ -9,7 +9,8 @@ its measurement and data policies.
 
 ## Requirements
 
-- **Node.js 20+**
+- **Node.js 22+** for the workspace toolchain (pnpm 11 requires Node 22.13+;
+  see `.nvmrc`). The published MCP itself runs on Node 20+.
 - **pnpm** (`corepack enable && corepack prepare pnpm@latest --activate`)
 - **Google Chrome** — Reddit data can only be obtained from a real, visible
   Chrome. Measured: `curl` 403, headless Chrome 403, headful Chrome 200. The
